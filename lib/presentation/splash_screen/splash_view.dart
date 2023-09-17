@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tanta_app/app/app_prefs.dart';
 import 'package:tanta_app/app/di.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
+import 'package:tanta_app/presentation/feed_form/feed_form.dart';
 import 'package:tanta_app/presentation/feed_states/feed_states.dart';
 import 'package:tanta_app/presentation/resources/assets_manager.dart';
 import 'package:tanta_app/presentation/resources/constant.dart';
@@ -32,7 +33,7 @@ class _SplashViewState extends State<SplashView> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const FeedStates(),
+              builder: (context) => const FeedForm(),
             ));
       },
     );
