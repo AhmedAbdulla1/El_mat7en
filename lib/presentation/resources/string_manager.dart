@@ -20,8 +20,10 @@ class AppStrings {
   static const String editFarm = 'تعديل المزرعه';
   static const String tracking = 'متابعه الطلب';
   static const String createOrder = 'تقديم طلب';
-
-
+  static const String order1 = 'طلب تامين ';
+  static const String order2 = 'طلب نخاله ';
+  static const String close = 'اغلاق';
+  
   static const String noRouteFound = "No Route Found";
 
 
