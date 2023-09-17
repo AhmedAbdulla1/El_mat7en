@@ -14,6 +14,7 @@ class AppStrings {
   static const String forgotPassword = 'هل نسيت كلمه المرور؟ ';
 
   static const String login = 'دخول';
+  
 
   static const String noRouteFound = "No Route Found";
 
