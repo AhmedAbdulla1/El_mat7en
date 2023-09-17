@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tanta_app/presentation/resources/color_manager.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
-
+  const CustomAppBar({super.key, required this.title});
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -12,7 +12,7 @@ class CustomAppBar extends StatelessWidget {
       textDirection: TextDirection.rtl,
       children: [
         Text(
-          'متابعة الطلب',
+          title,
           style: TextStyle(
               fontSize: 30.sp,
               // fontSize: FontSize.s30,

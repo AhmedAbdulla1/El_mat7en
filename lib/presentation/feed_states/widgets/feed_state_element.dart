@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tanta_app/presentation/resources/font_manager.dart';
 
-class FoodContainerElement extends StatelessWidget {
-  const FoodContainerElement({
+class FeedContainerElement extends StatelessWidget {
+  const FeedContainerElement({
     super.key,
     required this.text1,
     required this.text2,

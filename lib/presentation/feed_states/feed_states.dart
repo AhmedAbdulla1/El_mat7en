@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
-import 'package:tanta_app/presentation/food_states/widgets/custom_app_bar.dart';
-import 'package:tanta_app/presentation/food_states/widgets/custom_food_state_container.dart';
+import 'package:tanta_app/presentation/feed_states/widgets/custom_app_bar.dart';
+import 'package:tanta_app/presentation/feed_states/widgets/custom_feed_state_container.dart';
 
-
-class FoodStates extends StatelessWidget {
-  const FoodStates({super.key});
+class FeedStates extends StatelessWidget {
+  const FeedStates({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +13,11 @@ class FoodStates extends StatelessWidget {
         body: SafeArea(
       child: Column(
         children: [
-          const CustomAppBar(),
+          const CustomAppBar(title: 'متابعة الطلب'),
           Expanded(
             child: ListView.builder(
               itemBuilder: (context, index) {
-                return const CustomFoodStateContainer();
+                return const CustomFeedStateContainer();
               },
             ),
           ),
@@ -27,4 +26,3 @@ class FoodStates extends StatelessWidget {
     ));
   }
 }
-

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tanta_app/presentation/food_states/widgets/food_state_element.dart';
+import 'package:tanta_app/presentation/feed_states/widgets/feed_state_element.dart';
 import 'package:tanta_app/presentation/resources/color_manager.dart';
 
-class CustomFoodStateContainer extends StatelessWidget {
-  const CustomFoodStateContainer({super.key});
+class CustomFeedStateContainer extends StatelessWidget {
+  const CustomFeedStateContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +24,15 @@ class CustomFoodStateContainer extends StatelessWidget {
           ),
           child: const Column(
             children: [
-              FoodContainerElement(
+              FeedContainerElement(
                 text1: ' : اسم الطلب',
                 text2: 'علف',
               ),
-              FoodContainerElement(
+              FeedContainerElement(
                 text1: ' : تاريخ الطلب',
                 text2: '2021/10/10',
               ),
-              FoodContainerElement(
+              FeedContainerElement(
                 text1: ' : حالة الطلب',
                 text2: 'قيد الانتظار',
               ),
