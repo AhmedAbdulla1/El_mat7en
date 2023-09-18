@@ -22,7 +22,8 @@ class CustomFeedStateContainer extends StatelessWidget {
               width: 2,
             ),
           ),
-          child:  Column(
+
+          child: const Column(
             children: [
               FeedContainerElement(
                 text1: ' : اسم الطلب',
@@ -42,4 +43,6 @@ class CustomFeedStateContainer extends StatelessWidget {
       ),
     );
   }
+
 }
+

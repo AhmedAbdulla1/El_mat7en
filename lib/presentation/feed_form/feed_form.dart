@@ -3,9 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_button.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
 import 'package:tanta_app/presentation/feed_form/widgets/custom_text_form_filed.dart';
-
-import '../feed_states/widgets/custom_app_bar.dart';
-
+import 'package:tanta_app/presentation/feed_states/widgets/custom_app_bar.dart';
 class FeedForm extends StatelessWidget {
   const FeedForm({super.key});
 
@@ -81,3 +79,4 @@ class FeedForm extends StatelessWidget {
 //         );
 //   }
 // }
+

@@ -8,7 +8,9 @@ import 'package:tanta_app/presentation/login_screen/view/login_view.dart';
 import 'package:tanta_app/presentation/farmer/farmer.dart';
 import 'package:tanta_app/presentation/resources/string_manager.dart';
 import 'package:tanta_app/presentation/splash_screen/splash_view.dart';
+
 import 'package:tanta_app/presentation/veterinary_screen/veterinary.dart';
+
 
 class Routes {
   static const String splashScreen = "/";
@@ -19,6 +21,7 @@ class Routes {
   static const String feedStates = '/feedStates';
   static const String modifyFarmScreen = '/modifyFarmScreen';
   static const String veterinaryScreen = '/veterinaryScreen';
+
 
   static const String recoverPasswordScreen = "/recoverPassword";
   static const String verifyCodeScreen = "/verifyCodeScreen";
@@ -101,6 +104,7 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const VeterinaryScreen(),
         );
+
       // case Routes.settingScreen:
       //   return MaterialPageRoute(builder: (_) => const SettingView());
       // case Routes.storeDetailsScreen:
