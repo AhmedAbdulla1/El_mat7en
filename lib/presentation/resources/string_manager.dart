@@ -14,9 +14,16 @@ class AppStrings {
   static const String forgotPassword = 'هل نسيت كلمه المرور؟ ';
 
   static const String login = 'دخول';
+  static const String farmer = 'المزارع';
+  static const String editData = 'تعديل البيانات';
+  static const String editFarm = 'تعديل المزرعة';
+  static const String tracking = 'متابعه الطلب';
+  static const String createOrder = 'تقديم طلب';
+  static const String order1 = 'طلب تامين ';
+  static const String order2 = 'طلب نخاله ';
+  static const String close = 'اغلاق';
 
   static const String noRouteFound = "No Route Found";
-
 
 
   static const String recoverPasswordTitle = "Recover Password";

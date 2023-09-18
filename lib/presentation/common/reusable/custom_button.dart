@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:tanta_app/presentation/resources/color_manager.dart';
+import 'package:tanta_app/presentation/resources/font_manager.dart';
 import 'package:tanta_app/presentation/resources/values_manager.dart';
 
 Widget customElevatedButton({
@@ -26,6 +27,7 @@ Widget customElevatedButton({
 Widget customElevatedButtonWithoutStream({
   required VoidCallback onPressed,
   required String text,
+  double fontSize = 40,
 }) {
   return SizedBox(
     width: double.infinity,
@@ -35,6 +37,9 @@ Widget customElevatedButtonWithoutStream({
         onPressed: onPressed,
         child: Text(
           text,
+          style: TextStyle(
+            fontSize: fontSize,
+          ),
         ),
       ),
     ),
