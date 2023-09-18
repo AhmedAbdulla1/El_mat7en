@@ -56,9 +56,73 @@ class _FarmerScreenState extends State<FarmerScreen> {
               vertical: AppPadding.p20.h,
             ),
             child: customElevatedButtonWithoutStream(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const CustomAlertDialog(); // Your custom dialog widget
+                  },
+                );
+              },
               text: AppStrings.createOrder,
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomAlertDialog extends StatelessWidget {
+  const CustomAlertDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            AppSize.s20.w,
+          ),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: AppPadding.p10.h,
+              ),
+              child: customElevatedButtonWithoutStream(
+                onPressed: () {},
+                text: AppStrings.order1,
+                fontSize: 30,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: AppPadding.p10.h,
+              ),
+              child: customElevatedButtonWithoutStream(
+                onPressed: () {},
+                text: AppStrings.order2,
+                fontSize: 30,
+              ),
+            ),
+          ],
+        ),
+        contentPadding: EdgeInsets.only(
+          left: AppPadding.p20.w,
+          right: AppPadding.p20.w,
+          top: AppPadding.p22.h,
+          bottom: 0,
+        ),
+        actions: [
+          textButton(
+            context: context,
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            text: AppStrings.close,
           ),
         ],
       ),
