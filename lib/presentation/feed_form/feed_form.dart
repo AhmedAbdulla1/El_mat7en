@@ -4,31 +4,101 @@ import 'package:tanta_app/presentation/common/reusable/custom_button.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
 import 'package:tanta_app/presentation/feed_form/widgets/custom_text_form_filed.dart';
 import 'package:tanta_app/presentation/feed_states/widgets/custom_app_bar.dart';
+
 class FeedForm extends StatelessWidget {
+
   const FeedForm({super.key});
+
+  @override
+  State<FeedForm> createState() => _FeedFormState();
+}
+
+class _FeedFormState extends State<FeedForm> {
+  TextEditingController name = TextEditingController(),
+      nationalId = TextEditingController(),
+      village = TextEditingController(),
+      center = TextEditingController(),
+      government = TextEditingController(),
+      phone = TextEditingController();
+  @override
+  void dispose() {
+    name.dispose();
+    nationalId.dispose();
+    village.dispose();
+    center.dispose();
+    government.dispose();
+    phone.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return customScaffold(
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            const CustomAppBar(
-              title: 'تقديم الطلب',
-            ),
-              CustomTextFormFiled(hintText: 'الاسم'),
-              CustomTextFormFiled(hintText: 'الرقم القومى'),
-              CustomTextFormFiled(hintText: 'العنوان'),
-              CustomTextFormFiled(hintText: 'رقم التليفون'),
-            customElevatedButtonWithoutStream(onPressed: () {}, text: 'طلب'),
-            SizedBox(
-              height: 20.h,
-            ),
-          ],
-        ),
+        body: SafeArea(
+            child: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: ListView(
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const CustomAppBar(
+            title: 'تقديم الطلب',
+          ),
+          SizedBox(
+            height: 30.h,
+          ),
+          CustomTextFormFiled(hintText: 'الاسم', textEditingController: name),
+          SizedBox(
+            height: 20.h,
+          ),
+          CustomTextFormFiled(
+              hintText: 'الرقم القومى', textEditingController: nationalId),
+          SizedBox(
+            height: 20.h,
+          ),
+          Row(
+            textDirection: TextDirection.rtl,
+            children: [
+              SizedBox(
+                height: 100.h,
+                width: 110.w,
+                child: CustomTextFormFiled(
+                    hintText: 'قرية', textEditingController: village),
+              ),
+              SizedBox(
+                width: 10.w,
+              ),
+              SizedBox(
+                height: 100.h,
+                width: 110.w,
+                child: CustomTextFormFiled(
+                    hintText: 'مركز', textEditingController: center),
+              ),
+              SizedBox(
+                width: 10.w,
+              ),
+              SizedBox(
+                height: 100.h,
+                width: 110.w,
+                child: CustomTextFormFiled(
+                    hintText: 'محافظة', textEditingController: government),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20.h,
+          ),
+          CustomTextFormFiled(
+              hintText: 'رقم التليفون', textEditingController: phone),
+          SizedBox(
+            height: 70.h,
+          ),
+          customElevatedButtonWithoutStream(onPressed: () {}, text: 'طلب'),
+          SizedBox(
+            height: 20.h,
+          ),
+        ],
       ),
-    );
+    )));
   }
 }
 
@@ -44,7 +114,7 @@ class FeedForm extends StatelessWidget {
 //   String selectedItem = 'Item 1';
 //   @override
 //   Widget build(BuildContext context) {
-//     return
+//     return 
 //         Padding(
 //           padding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 10.h),
 //           child: Container(
