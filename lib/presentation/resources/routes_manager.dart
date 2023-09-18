@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tanta_app/app/di.dart';
+import 'package:tanta_app/presentation/administrative/administrative.dart';
 import 'package:tanta_app/presentation/farm_modification_screen/modify_farm_screen.dart';
 import 'package:tanta_app/presentation/feed_form/feed_form.dart';
 import 'package:tanta_app/presentation/feed_states/feed_states.dart';
@@ -21,6 +22,7 @@ class Routes {
   static const String feedStates = '/feedStates';
   static const String modifyFarmScreen = '/modifyFarmScreen';
   static const String veterinaryScreen = '/veterinaryScreen';
+  static const String adminScreen = '/adminScreen';
 
 
   static const String recoverPasswordScreen = "/recoverPassword";
@@ -104,7 +106,10 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const VeterinaryScreen(),
         );
-
+      case Routes.adminScreen:
+        return MaterialPageRoute(
+          builder: (_) => const Administrative(),
+        );
       // case Routes.settingScreen:
       //   return MaterialPageRoute(builder: (_) => const SettingView());
       // case Routes.storeDetailsScreen:

@@ -30,6 +30,12 @@ class _LoginViewState extends State<LoginView> {
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey _globalKey = GlobalKey<FormState>();
 
+  List<String> emails= [
+    'ahmed@gmail.com',
+    'admin@gmail.com',
+    'veterinary@gmail.com',
+  ];
+
   bool visible = true;
 
   void _bind() {
@@ -118,7 +124,14 @@ class _LoginViewState extends State<LoginView> {
               customElevatedButton(
                 stream: _loginViewModel.outAreAllInputValid,
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, Routes.farmerScreen);
+                  print(_emailController.text);
+                  if(_emailController.text== emails[1]){
+                    Navigator.pushReplacementNamed(context, Routes.adminScreen);
+                  }
+                  else if(_emailController.text== emails[2]){
+                    Navigator.pushReplacementNamed(context, Routes.veterinaryScreen);
+                  }else
+                   { Navigator.pushReplacementNamed(context, Routes.farmerScreen);}
                   _loginViewModel.login();
                 },
                 text: AppStrings.login,

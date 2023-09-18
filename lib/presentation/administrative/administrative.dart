@@ -4,7 +4,7 @@ import 'package:tanta_app/presentation/administrative/widgets/custom_data_show_c
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
 import 'package:tanta_app/presentation/feed_form/widgets/custom_text_form_filed.dart';
 import 'package:tanta_app/presentation/feed_states/widgets/custom_app_bar.dart';
-
+import 'package:tanta_app/presentation/resources/values_manager.dart';
 
 class Administrative extends StatefulWidget {
   const Administrative({super.key});
@@ -34,7 +34,18 @@ class _AdministrativeState extends State<Administrative> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const CustomAppBar(title: 'الرقابه'),
+          Padding(
+            padding: EdgeInsets.only(
+              top: AppPadding.p30.h,
+              bottom: AppPadding.p50.h,
+            ),
+            child: Center(
+              child: Text(
+                'الرقابه',
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
+            ),
+          ),
           SizedBox(
             width: double.infinity,
             height: 50.h,
@@ -97,4 +108,3 @@ class _AdministrativeState extends State<Administrative> {
     ));
   }
 }
-

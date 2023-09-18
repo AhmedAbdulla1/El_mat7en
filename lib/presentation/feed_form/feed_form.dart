@@ -4,9 +4,10 @@ import 'package:tanta_app/presentation/common/reusable/custom_button.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
 import 'package:tanta_app/presentation/feed_form/widgets/custom_text_form_filed.dart';
 import 'package:tanta_app/presentation/feed_states/widgets/custom_app_bar.dart';
+import 'package:tanta_app/presentation/resources/string_manager.dart';
+import 'package:tanta_app/presentation/resources/values_manager.dart';
 
-class FeedForm extends StatelessWidget {
-
+class FeedForm extends StatefulWidget {
   const FeedForm({super.key});
 
   @override
@@ -20,6 +21,7 @@ class _FeedFormState extends State<FeedForm> {
       center = TextEditingController(),
       government = TextEditingController(),
       phone = TextEditingController();
+
   @override
   void dispose() {
     name.dispose();
@@ -34,71 +36,80 @@ class _FeedFormState extends State<FeedForm> {
   @override
   Widget build(BuildContext context) {
     return customScaffold(
-        body: SafeArea(
-            child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
-      child: ListView(
-        // mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          const CustomAppBar(
-            title: 'تقديم الطلب',
-          ),
-          SizedBox(
-            height: 30.h,
-          ),
-          CustomTextFormFiled(hintText: 'الاسم', textEditingController: name),
-          SizedBox(
-            height: 20.h,
-          ),
-          CustomTextFormFiled(
-              hintText: 'الرقم القومى', textEditingController: nationalId),
-          SizedBox(
-            height: 20.h,
-          ),
-          Row(
-            textDirection: TextDirection.rtl,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: ListView(
+            // mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SizedBox(
-                height: 100.h,
-                width: 110.w,
-                child: CustomTextFormFiled(
-                    hintText: 'قرية', textEditingController: village),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: AppPadding.p30.h,
+                  bottom: AppPadding.p70.h,
+                ),
+                child: const CustomAppBar(
+                  title: AppStrings.createOrder,
+                ),
               ),
               SizedBox(
-                width: 10.w,
+                height: 30.h,
+              ),
+              CustomTextFormFiled(
+                  hintText: 'الاسم', textEditingController: name),
+              SizedBox(
+                height: 20.h,
+              ),
+              CustomTextFormFiled(
+                  hintText: 'الرقم القومى', textEditingController: nationalId),
+              SizedBox(
+                height: 20.h,
+              ),
+              Row(
+                textDirection: TextDirection.rtl,
+                children: [
+                  SizedBox(
+                    height: 100.h,
+                    width: 110.w,
+                    child: CustomTextFormFiled(
+                        hintText: 'قرية', textEditingController: village),
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  SizedBox(
+                    height: 100.h,
+                    width: 110.w,
+                    child: CustomTextFormFiled(
+                        hintText: 'مركز', textEditingController: center),
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  SizedBox(
+                    height: 100.h,
+                    width: 110.w,
+                    child: CustomTextFormFiled(
+                        hintText: 'محافظة', textEditingController: government),
+                  ),
+                ],
               ),
               SizedBox(
-                height: 100.h,
-                width: 110.w,
-                child: CustomTextFormFiled(
-                    hintText: 'مركز', textEditingController: center),
+                height: 20.h,
               ),
+              CustomTextFormFiled(
+                  hintText: 'رقم التليفون', textEditingController: phone),
               SizedBox(
-                width: 10.w,
+                height: 70.h,
               ),
+              customElevatedButtonWithoutStream(onPressed: () {}, text: 'طلب'),
               SizedBox(
-                height: 100.h,
-                width: 110.w,
-                child: CustomTextFormFiled(
-                    hintText: 'محافظة', textEditingController: government),
+                height: 20.h,
               ),
             ],
           ),
-          SizedBox(
-            height: 20.h,
-          ),
-          CustomTextFormFiled(
-              hintText: 'رقم التليفون', textEditingController: phone),
-          SizedBox(
-            height: 70.h,
-          ),
-          customElevatedButtonWithoutStream(onPressed: () {}, text: 'طلب'),
-          SizedBox(
-            height: 20.h,
-          ),
-        ],
+        ),
       ),
-    )));
+    );
   }
 }
 
@@ -114,7 +125,7 @@ class _FeedFormState extends State<FeedForm> {
 //   String selectedItem = 'Item 1';
 //   @override
 //   Widget build(BuildContext context) {
-//     return 
+//     return
 //         Padding(
 //           padding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 10.h),
 //           child: Container(
@@ -149,4 +160,3 @@ class _FeedFormState extends State<FeedForm> {
 //         );
 //   }
 // }
-

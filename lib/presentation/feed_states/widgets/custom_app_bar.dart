@@ -14,14 +14,6 @@ class CustomAppBar extends StatelessWidget {
         SizedBox(
           width: 10.w,
         ),
-        Container(
-          width: 14.w,
-          height: 14.h,
-          decoration: BoxDecoration(
-            color: ColorManager.primary,
-            borderRadius: BorderRadius.circular(50.r),
-          ),
-        ),
         SizedBox(
           width: 10.w,
         ),
@@ -29,7 +21,6 @@ class CustomAppBar extends StatelessWidget {
           title,
           style: TextStyle(
               fontSize: 30.sp,
-              // fontSize: FontSize.s30,
               color: ColorManager.primary,
               fontWeight: FontWeight.bold),
         ),
