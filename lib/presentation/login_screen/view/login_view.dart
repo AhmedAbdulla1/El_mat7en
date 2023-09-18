@@ -118,6 +118,7 @@ class _LoginViewState extends State<LoginView> {
               customElevatedButton(
                 stream: _loginViewModel.outAreAllInputValid,
                 onPressed: () {
+                  Navigator.pushReplacementNamed(context, Routes.farmerScreen);
                   _loginViewModel.login();
                 },
                 text: AppStrings.login,

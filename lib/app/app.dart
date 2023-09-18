@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder:(context,child)=> MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'FireBox',
+        title: 'المطاحن',
         theme: getApplicationTheme(),
         onGenerateRoute: RouteGenerator.getRoute,
         initialRoute: Routes.splashScreen,

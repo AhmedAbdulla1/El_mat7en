@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'color_manager.dart';
 import 'font_manager.dart';
@@ -7,7 +8,7 @@ import 'values_manager.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(
-    //main color
+    //farmer color
     scaffoldBackgroundColor: ColorManager.white,
     primaryColor: ColorManager.primary,
     primaryColorLight: ColorManager.lightPrimary,
@@ -42,7 +43,7 @@ ThemeData getApplicationTheme() {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         textStyle:
-            getRegularStyle(color: ColorManager.white, fontSize: FontSize.s48),
+            getRegularStyle(color: ColorManager.white, fontSize: FontSize.s40.w),
         backgroundColor: ColorManager.primary,
 
         shape: RoundedRectangleBorder(
@@ -90,8 +91,8 @@ ThemeData getApplicationTheme() {
         fontSize: FontSize.s18,
       ),
       labelLarge: getBoldStyle(
-        color: ColorManager.simiBlack,
-        fontSize: FontSize.s24,
+        color: ColorManager.primary,
+        fontSize: FontSize.s40  ,
       ),
       displayMedium: getBoldStyle(
         color: ColorManager.white,
