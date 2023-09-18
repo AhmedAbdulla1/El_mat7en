@@ -1,18 +1,23 @@
-
 import 'package:flutter/material.dart';
 import 'package:tanta_app/app/di.dart';
+import 'package:tanta_app/presentation/farm_modification_screen/modify_farm_screen.dart';
+import 'package:tanta_app/presentation/feed_form/feed_form.dart';
+import 'package:tanta_app/presentation/feed_states/feed_states.dart';
 import 'package:tanta_app/presentation/hello_screen/hello_view.dart';
 import 'package:tanta_app/presentation/login_screen/view/login_view.dart';
 import 'package:tanta_app/presentation/farmer/farmer.dart';
 import 'package:tanta_app/presentation/resources/string_manager.dart';
 import 'package:tanta_app/presentation/splash_screen/splash_view.dart';
 
-
 class Routes {
   static const String splashScreen = "/";
   static const String helloScreen = "/hello";
   static const String loginScreen = "/login";
   static const String farmerScreen = '/farmer';
+  static const String feedForm = '/feedForm';
+  static const String feedStates = '/feedStates';
+  static const String modifyFarmScreen = '/modifyFarmScreen';
+
   static const String recoverPasswordScreen = "/recoverPassword";
   static const String verifyCodeScreen = "/verifyCodeScreen";
   static const String changePasswordScreen = "/changePasswordScreen";
@@ -22,7 +27,7 @@ class Routes {
   static const String settingScreen = "/setting";
   static const String wifiSetupScreen = "/wifiSetup";
   static const String exercisesScreen = "/exercises";
-  static const String inTrainingScreen ='/inTraining';
+  static const String inTrainingScreen = '/inTraining';
 }
 
 //
@@ -44,12 +49,12 @@ class RouteGenerator {
             return const LoginView();
           },
         );
-    case Routes.farmerScreen:
-      return MaterialPageRoute(
-        builder: (_) {
-          return const FarmerScreen();
-        },
-      );
+      case Routes.farmerScreen:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const FarmerScreen();
+          },
+        );
       // case Routes.recoverPasswordScreen:
       //   return MaterialPageRoute(
       //     builder: (_) {
@@ -77,19 +82,19 @@ class RouteGenerator {
       //     initMainModule();
       //     return const MainView();
       //   });
-      // case Routes.profileDetailsScreen:
-      //   return MaterialPageRoute(builder: (_) {
-      //     initProfileDetailsModule();
-      //     return const ProfileDetailsView();
-      //   });
-      // case Routes.wifiSetupScreen:
-      //   return MaterialPageRoute(builder: (_) {
-      //     return FlutterWifiIoT();
-      //   });
-      // case Routes.exercisesScreen:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const ExercisesView(),
-      //   );
+      case Routes.feedForm:
+        return MaterialPageRoute(builder: (_) {
+          // initProfileDetailsModule();
+          return const FeedForm();
+        });
+      case Routes.feedStates:
+        return MaterialPageRoute(builder: (_) {
+          return const FeedStates();
+        });
+      case Routes.modifyFarmScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ModifyFarmScreen(),
+        );
       // case Routes.settingScreen:
       //   return MaterialPageRoute(builder: (_) => const SettingView());
       // case Routes.storeDetailsScreen:

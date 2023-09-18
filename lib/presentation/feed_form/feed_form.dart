@@ -5,30 +5,31 @@ import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
 import 'package:tanta_app/presentation/feed_form/widgets/custom_text_form_filed.dart';
 import 'package:tanta_app/presentation/feed_states/widgets/custom_app_bar.dart';
 
-
 class FeedForm extends StatelessWidget {
   const FeedForm({super.key});
 
   @override
   Widget build(BuildContext context) {
     return customScaffold(
-        body: SafeArea(
-            child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        const CustomAppBar(
-          title: 'تقديم الطلب',
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            const CustomAppBar(
+              title: 'تقديم الطلب',
+            ),
+            const CustomTextFormFiled(hintText: 'الاسم'),
+            const CustomTextFormFiled(hintText: 'الرقم القومى'),
+            const CustomTextFormFiled(hintText: 'العنوان'),
+            const CustomTextFormFiled(hintText: 'رقم التليفون'),
+            customElevatedButtonWithoutStream(onPressed: () {}, text: 'طلب'),
+            SizedBox(
+              height: 20.h,
+            ),
+          ],
         ),
-        const CustomTextFormFiled(hintText: 'الاسم'),
-        const CustomTextFormFiled(hintText: 'الرقم القومى'),
-        const CustomTextFormFiled(hintText: 'العنوان'),
-        const CustomTextFormFiled(hintText: 'رقم التليفون'),
-        customElevatedButtonWithoutStream(onPressed: () {}, text: 'طلب'),
-        SizedBox(
-          height: 20.h,
-        ),
-      ],
-    )));
+      ),
+    );
   }
 }
 
@@ -44,7 +45,7 @@ class FeedForm extends StatelessWidget {
 //   String selectedItem = 'Item 1';
 //   @override
 //   Widget build(BuildContext context) {
-//     return 
+//     return
 //         Padding(
 //           padding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 10.h),
 //           child: Container(
@@ -79,4 +80,3 @@ class FeedForm extends StatelessWidget {
 //         );
 //   }
 // }
-

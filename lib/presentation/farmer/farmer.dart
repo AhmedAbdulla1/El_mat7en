@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_button.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
+import 'package:tanta_app/presentation/resources/routes_manager.dart';
 import 'package:tanta_app/presentation/resources/string_manager.dart';
 import 'package:tanta_app/presentation/resources/values_manager.dart';
 
@@ -38,7 +39,9 @@ class _FarmerScreenState extends State<FarmerScreen> {
               vertical: AppPadding.p20.h,
             ),
             child: customElevatedButtonWithoutStream(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.modifyFarmScreen);
+              },
               text: AppStrings.editFarm,
             ),
           ),
@@ -47,7 +50,9 @@ class _FarmerScreenState extends State<FarmerScreen> {
               vertical: AppPadding.p20.h,
             ),
             child: customElevatedButtonWithoutStream(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.feedStates);
+              },
               text: AppStrings.tracking,
             ),
           ),
@@ -93,7 +98,10 @@ class CustomAlertDialog extends StatelessWidget {
                 vertical: AppPadding.p10.h,
               ),
               child: customElevatedButtonWithoutStream(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.pushNamed(context, Routes.feedForm);
+                },
                 text: AppStrings.order1,
                 fontSize: 30,
               ),
@@ -103,7 +111,10 @@ class CustomAlertDialog extends StatelessWidget {
                 vertical: AppPadding.p10.h,
               ),
               child: customElevatedButtonWithoutStream(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.pushNamed(context, Routes.feedForm);
+                },
                 text: AppStrings.order2,
                 fontSize: 30,
               ),

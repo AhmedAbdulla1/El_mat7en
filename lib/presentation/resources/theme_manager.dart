@@ -91,8 +91,8 @@ ThemeData getApplicationTheme() {
         fontSize: FontSize.s18,
       ),
       labelLarge: getBoldStyle(
-        color: ColorManager.simiBlack,
-        fontSize: FontSize.s24,
+        color: ColorManager.primary,
+        fontSize: FontSize.s40  ,
       ),
       displayMedium: getBoldStyle(
         color: ColorManager.white,

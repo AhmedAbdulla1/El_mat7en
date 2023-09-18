@@ -32,7 +32,6 @@ class InputField extends StatelessWidget {
                   children: [
                     Expanded(
                       child: TextFormField(
-
                         controller: controller,
                         autofocus: false,
                         readOnly: widget != null ? true : false,
