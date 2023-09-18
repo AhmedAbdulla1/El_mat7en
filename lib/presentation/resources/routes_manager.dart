@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tanta_app/app/di.dart';
 import 'package:tanta_app/presentation/hello_screen/hello_view.dart';
 import 'package:tanta_app/presentation/login_screen/view/login_view.dart';
+import 'package:tanta_app/presentation/farmer/farmer.dart';
 import 'package:tanta_app/presentation/resources/string_manager.dart';
 import 'package:tanta_app/presentation/splash_screen/splash_view.dart';
 
@@ -11,12 +12,11 @@ class Routes {
   static const String splashScreen = "/";
   static const String helloScreen = "/hello";
   static const String loginScreen = "/login";
-  static const String registerScreen = "/register";
-  static const String privacyScreen = "/privacy";
+  static const String farmerScreen = '/farmer';
   static const String recoverPasswordScreen = "/recoverPassword";
   static const String verifyCodeScreen = "/verifyCodeScreen";
   static const String changePasswordScreen = "/changePasswordScreen";
-  static const String mainScreen = "/main";
+  static const String mainScreen = "/farmer";
   static const String searchScreen = '/searchScreen';
   static const String profileDetailsScreen = "/profileDetails";
   static const String settingScreen = "/setting";
@@ -44,6 +44,12 @@ class RouteGenerator {
             return const LoginView();
           },
         );
+    case Routes.farmerScreen:
+      return MaterialPageRoute(
+        builder: (_) {
+          return const FarmerScreen();
+        },
+      );
       // case Routes.recoverPasswordScreen:
       //   return MaterialPageRoute(
       //     builder: (_) {
@@ -58,12 +64,7 @@ class RouteGenerator {
       //       return const VerifyCodeView();
       //     },
       //   );
-      // case Routes.inTrainingScreen:
-      //   return MaterialPageRoute(
-      //     builder: (_) {
-      //       return const TrainingViewBar();
-      //     },
-      //   );
+
       // // case Routes.changePasswordScreen:
       // //   return MaterialPageRoute(
       // //     builder: (_) {
