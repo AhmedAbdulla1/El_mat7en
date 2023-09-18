@@ -1,14 +1,16 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
 import 'package:tanta_app/presentation/feed_form/widgets/custom_text_form_filed.dart';
 import 'package:tanta_app/presentation/feed_states/widgets/custom_app_bar.dart';
+import 'package:tanta_app/presentation/resources/assets_manager.dart';
+import 'package:tanta_app/presentation/resources/color_manager.dart';
 import 'package:tanta_app/presentation/resources/string_manager.dart';
 import 'package:tanta_app/presentation/resources/values_manager.dart';
-import 'input_field.dart';
 
 class ModifyFarmScreen extends StatefulWidget {
   const ModifyFarmScreen({super.key});
@@ -20,19 +22,8 @@ class ModifyFarmScreen extends StatefulWidget {
 class _ModifyFarmScreenState extends State<ModifyFarmScreen> {
   DateTime _selectDate = DateTime.now();
   String hint = 'تاريخ الميلاد';
-  bool isClicked = false;
   File? _image;
-  final _picker = ImagePicker();
-
-  Future<void> _openImagePicker() async {
-    final XFile? pickedImage =
-        await _picker.pickImage(source: ImageSource.gallery);
-    if (pickedImage != null) {
-      setState(() {
-        _image = File(pickedImage.path);
-      });
-    }
-  }
+  final ImagePicker _imagePicker = ImagePicker();
 
   _getDateFromUser() async {
     DateTime? pickedDate = await showDatePicker(
@@ -40,6 +31,22 @@ class _ModifyFarmScreenState extends State<ModifyFarmScreen> {
       initialDate: _selectDate,
       firstDate: DateTime(2015),
       lastDate: DateTime(2030),
+      cancelText: 'الغاء',
+      confirmText: "تم",
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: ColorManager.primary,
+            // Change the color here
+            colorScheme: ColorScheme.light(primary: ColorManager.primary),
+            // Change the color here
+            buttonTheme: const ButtonThemeData(
+              textTheme: ButtonTextTheme.primary,
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
     if (pickedDate != null) {
       setState(() {
@@ -54,122 +61,177 @@ class _ModifyFarmScreenState extends State<ModifyFarmScreen> {
   @override
   Widget build(BuildContext context) {
     List<String> items = ['جاموس', 'بقر', 'جمل'];
-    String selected;
     List<String> list = ['ذكر', 'انثي'];
-    String? id;
 
     return customScaffold(
-      body: SizedBox(
-        width: double.infinity,
-        child: ListView(
-          children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.only(top: AppPadding.p30),
-              child: CustomAppBar(
-                title:AppStrings.editFarm,
+      body: ListView(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(
+                top: AppPadding.p30.h, bottom: AppPadding.p50.h),
+            child: const CustomAppBar(
+              title: AppStrings.editFarm,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppPadding.p30.w,
+              vertical: AppPadding.p10.h,
+            ),
+            child: DropdownMenu(
+              width: MediaQuery.sizeOf(context).width - 60.w,
+              label: Text(
+                'النـوع',
+                style: Theme.of(context).textTheme.displayMedium,
               ),
-            ),
-            const SizedBox(
-              height: 100,
-            ),
-            Center(
-              child: DropdownMenu(
-                width: 270,
-                hintText: 'النـوع',
-                textStyle: const TextStyle(
-                    fontSize: 17.0,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w600),
-                dropdownMenuEntries: items.map((item) => DropdownMenuEntry(
-                        style: const ButtonStyle(
-                          padding: MaterialStatePropertyAll(
-                              EdgeInsets.only(right: 10, left: 10)),
-                          fixedSize: MaterialStatePropertyAll(Size(270, 1)),
+              textStyle: Theme.of(context).textTheme.displayMedium,
+              dropdownMenuEntries: items
+                  .map(
+                    (item) => DropdownMenuEntry(
+                      style: const ButtonStyle(
+                        padding: MaterialStatePropertyAll(
+                          EdgeInsets.only(
+                            right: 10,
+                            left: 10,
+                          ),
                         ),
-                        value: item,
-                        label: item))
-                    .toList(),
-                onSelected: (val) {
-                  setState(() {
-                    selected = val!;
-                  });
-                },
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Center(
-              child: DropdownMenu(
-                width: 270,
-                hintText: 'الجنس',
-                textStyle: const TextStyle(
-                    fontSize: 18.0,
-                    color: Color(0xff9D9D9D),
-                    fontWeight: FontWeight.w600),
-                dropdownMenuEntries: list
-                    .map((item) => DropdownMenuEntry(
-                        style: const ButtonStyle(
-                          textStyle: MaterialStatePropertyAll(TextStyle(
-                              fontSize: 18.0, fontWeight: FontWeight.w600)),
-                          padding: MaterialStatePropertyAll(
-                              EdgeInsets.only(right: 10, left: 10)),
-                          fixedSize: MaterialStatePropertyAll(Size(270, 1)),
-                        ),
-                        value: item,
-                        label: item))
-                    .toList(),
-                onSelected: (val) {
-                  setState(() {
-                    selected = val!;
-                  });
-                },
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-
-            Center(
-              child: SizedBox(
-                width: 270,
-                child: InputField(
-                    hint: hint,
-                    widget: IconButton(
-                      onPressed: () {
-                        _getDateFromUser();
-                      },
-                      icon: const Icon(Icons.calendar_today_outlined),
-                      color: Colors.grey[600],
-                    )),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Center(
-              child: CustomTextFormFiled(
-                 hintText: 'id',
-                 textEditingController: TextEditingController(),
-              ),
-            ),
-            Center(
-              child: SizedBox(
-                width: 270,
-                child: InputField(
-                    hint: 'صورة',
-                    widget: IconButton(
-                      onPressed: _openImagePicker,
-                      icon: Icon(
-                        Icons.image_outlined,
-                        color: Colors.grey[600],
+                        fixedSize: MaterialStatePropertyAll(Size(270, 1)),
                       ),
-                    )),
-              ),
+                      value: item,
+                      label: item,
+                    ),
+                  )
+                  .toList(),
+              onSelected: (val) {
+                // setState(() {
+                //   selected = val!;
+                // });
+              },
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppPadding.p30.h,
+              vertical: AppPadding.p10.w,
+            ),
+            child: DropdownMenu(
+              width: MediaQuery.sizeOf(context).width - AppPadding.p65,
+              label: Text(
+                'الجنس',
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
+              textStyle: Theme.of(context).textTheme.displayMedium,
+              dropdownMenuEntries: list
+                  .map((item) => DropdownMenuEntry(
+                      style: const ButtonStyle(
+                        textStyle: MaterialStatePropertyAll(TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w600,
+                        )),
+                        padding: MaterialStatePropertyAll(
+                          EdgeInsets.only(
+                            right: 10,
+                            left: 10,
+                          ),
+                        ),
+                      ),
+                      value: item,
+                      label: item))
+                  .toList(),
+              onSelected: (val) {},
+            ),
+          ),
+          CustomTextFormFiled(
+            hintText: hint,
+            onTap: () {
+              _getDateFromUser();
+            },
+          ),
+          CustomTextFormFiled(
+            hintText: 'id',
+          ),
+          CustomTextFormFiled(
+            hintText: 'صورة',
+            onTap: () {
+              print('image');
+              _showPicker(context);
+            },
+          ),
+        ],
       ),
     );
   }
+
+  _showPicker(BuildContext context) {
+    showModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(
+            AppSize.s30,
+          ),
+        ),
+      ),
+      context: context,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.camera),
+                title: Text(
+                  AppStrings.photoGallery,
+                  style: TextStyle(color: ColorManager.primary),
+                ),
+                onTap: () {
+                  _imageFromGallery();
+                  Navigator.of(context).pop();
+                },
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.camera_alt_rounded,
+                ),
+                title: Text(
+                  AppStrings.photoCamera,
+                  style: TextStyle(
+                    color: ColorManager.primary,
+                  ),
+                ),
+                onTap: () {
+                  _imageFromCamera();
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  _imageFromGallery() async {
+    var image = await _imagePicker.pickImage(source: ImageSource.gallery);
+    // _viewModel.setProfilePicture(File(image?.path ?? ""));
+  }
+
+  _imageFromCamera() async {
+    var image = await _imagePicker.pickImage(source: ImageSource.camera);
+    // _viewModel.setProfilePicture(File(image?.path ?? ""));
+  }
+
+  Widget _personPicketByUser(File? image) {
+    if (image != null && image.path.isNotEmpty) {
+      return Image.file(
+        image,
+        fit: BoxFit.contain,
+      );
+    } else {
+      return Image.asset(
+        ImageAssets.appLogo,
+        fit: BoxFit.cover,
+      );
+    }
+  }
 }
+

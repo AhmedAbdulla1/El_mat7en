@@ -5,7 +5,8 @@ import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
 import 'package:tanta_app/presentation/feed_form/widgets/custom_text_form_filed.dart';
 import 'package:tanta_app/presentation/feed_states/widgets/custom_app_bar.dart';
 
-class FeedForm extends StatefulWidget {
+class FeedForm extends StatelessWidget {
+
   const FeedForm({super.key});
 
   @override
