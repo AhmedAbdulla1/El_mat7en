@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tanta_app/presentation/resources/font_manager.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
@@ -7,7 +8,7 @@ class CustomTextFormFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 10.h),
       child: TextFormField(
         textAlign: TextAlign.center,
         decoration: InputDecoration(
