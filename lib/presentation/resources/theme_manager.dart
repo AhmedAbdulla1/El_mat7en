@@ -95,7 +95,7 @@ ThemeData getApplicationTheme() {
         fontSize: FontSize.s40  ,
       ),
       displayMedium: getBoldStyle(
-        color: ColorManager.white,
+        color: ColorManager.grey2,
         fontSize: FontSize.s25,
 
       ),

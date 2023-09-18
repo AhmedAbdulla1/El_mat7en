@@ -18,10 +18,10 @@ class FeedForm extends StatelessWidget {
             const CustomAppBar(
               title: 'تقديم الطلب',
             ),
-            const CustomTextFormFiled(hintText: 'الاسم'),
-            const CustomTextFormFiled(hintText: 'الرقم القومى'),
-            const CustomTextFormFiled(hintText: 'العنوان'),
-            const CustomTextFormFiled(hintText: 'رقم التليفون'),
+              CustomTextFormFiled(hintText: 'الاسم'),
+              CustomTextFormFiled(hintText: 'الرقم القومى'),
+              CustomTextFormFiled(hintText: 'العنوان'),
+              CustomTextFormFiled(hintText: 'رقم التليفون'),
             customElevatedButtonWithoutStream(onPressed: () {}, text: 'طلب'),
             SizedBox(
               height: 20.h,
