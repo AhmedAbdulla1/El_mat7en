@@ -39,7 +39,7 @@ class CustomAppBar extends StatelessWidget {
             Navigator.pop(context);
           },
           icon: Icon(
-            Icons.arrow_back,
+            Icons.arrow_forward,
             size: 30.sp,
           ),
         ),
