@@ -28,7 +28,6 @@ class _FeedFormState extends State<FeedForm> {
     government.dispose();
     phone.dispose();
     super.dispose();
-    super.dispose();
   }
 
   @override
