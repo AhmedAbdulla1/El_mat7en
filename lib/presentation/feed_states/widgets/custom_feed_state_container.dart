@@ -22,6 +22,7 @@ class CustomFeedStateContainer extends StatelessWidget {
               width: 2,
             ),
           ),
+
           child: const Column(
             children: [
               FeedContainerElement(
@@ -42,4 +43,6 @@ class CustomFeedStateContainer extends StatelessWidget {
       ),
     );
   }
+
 }
+
