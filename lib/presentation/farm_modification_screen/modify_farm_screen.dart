@@ -31,6 +31,22 @@ class _ModifyFarmScreenState extends State<ModifyFarmScreen> {
       initialDate: _selectDate,
       firstDate: DateTime(2015),
       lastDate: DateTime(2030),
+      cancelText: 'الغاء',
+      confirmText: "تم",
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: ColorManager.primary,
+            // Change the color here
+            colorScheme: ColorScheme.light(primary: ColorManager.primary),
+            // Change the color here
+            buttonTheme: const ButtonThemeData(
+              textTheme: ButtonTextTheme.primary,
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
     if (pickedDate != null) {
       setState(() {
@@ -57,9 +73,13 @@ class _ModifyFarmScreenState extends State<ModifyFarmScreen> {
               title: AppStrings.editFarm,
             ),
           ),
-          Center(
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppPadding.p30.w,
+              vertical: AppPadding.p10.h,
+            ),
             child: DropdownMenu(
-              width: 270,
+              width: MediaQuery.sizeOf(context).width - 60.w,
               label: Text(
                 'النـوع',
                 style: Theme.of(context).textTheme.displayMedium,
@@ -89,49 +109,43 @@ class _ModifyFarmScreenState extends State<ModifyFarmScreen> {
               },
             ),
           ),
-          const SizedBox(
-            height: 30,
-          ),
-          Center(
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppPadding.p30.h,
+              vertical: AppPadding.p10.w,
+            ),
             child: DropdownMenu(
-              width: 270,
-              hintText: 'الجنس',
-              textStyle: const TextStyle(
-                  fontSize: 18.0,
-                  color: Color(0xff9D9D9D),
-                  fontWeight: FontWeight.w600),
+              width: MediaQuery.sizeOf(context).width - AppPadding.p65,
+              label: Text(
+                'الجنس',
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
+              textStyle: Theme.of(context).textTheme.displayMedium,
               dropdownMenuEntries: list
                   .map((item) => DropdownMenuEntry(
                       style: const ButtonStyle(
                         textStyle: MaterialStatePropertyAll(TextStyle(
-                            fontSize: 18.0, fontWeight: FontWeight.w600)),
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w600,
+                        )),
                         padding: MaterialStatePropertyAll(
-                            EdgeInsets.only(right: 10, left: 10)),
-                        fixedSize: MaterialStatePropertyAll(Size(270, 1)),
+                          EdgeInsets.only(
+                            right: 10,
+                            left: 10,
+                          ),
+                        ),
                       ),
                       value: item,
                       label: item))
                   .toList(),
-              onSelected: (val) {
-                // setState(() {
-                //   selected = val!;
-                // });
-              },
+              onSelected: (val) {},
             ),
-          ),
-          const SizedBox(
-            height: 30,
           ),
           CustomTextFormFiled(
             hintText: hint,
             onTap: () {
               _getDateFromUser();
             },
-          ),
-
-
-          const SizedBox(
-            height: 30,
           ),
           CustomTextFormFiled(
             hintText: 'id',

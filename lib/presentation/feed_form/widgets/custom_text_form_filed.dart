@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tanta_app/presentation/resources/font_manager.dart';
+import 'package:tanta_app/presentation/resources/values_manager.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
   CustomTextFormFiled({super.key, required this.hintText , this.onTap});
@@ -10,7 +11,7 @@ class CustomTextFormFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: AppPadding.p30.w, vertical: 10.h),
       child: TextFormField(
         onTap: () {
           // Call onTap if provided

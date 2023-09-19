@@ -96,7 +96,7 @@ ThemeData getApplicationTheme() {
       ),
       displayMedium: getBoldStyle(
         color: ColorManager.grey2,
-        fontSize: FontSize.s25,
+        fontSize: FontSize.s18,
 
       ),
       titleLarge: getMediumStyle(
