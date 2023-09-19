@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tanta_app/app/app_prefs.dart';
 import 'package:tanta_app/app/di.dart';
+import 'package:tanta_app/presentation/administrative/administrative.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
 import 'package:tanta_app/presentation/feed_form/feed_form.dart';
 
@@ -37,7 +38,7 @@ class _SplashViewState extends State<SplashView> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const FeedForm(),
+            builder: (context) => const Administrative(),
           ),
         );
 
