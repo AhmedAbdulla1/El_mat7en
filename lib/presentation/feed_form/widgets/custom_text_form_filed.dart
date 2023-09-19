@@ -4,17 +4,26 @@ import 'package:tanta_app/presentation/resources/font_manager.dart';
 import 'package:tanta_app/presentation/resources/values_manager.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
-  const CustomTextFormFiled({super.key, required this.hintText,this.onTap, required this.textEditingController});
+  CustomTextFormFiled(
+      {super.key,
+      required this.hintText,
+      this.onTap,
+      required this.textEditingController});
+
   final String hintText;
   final TextEditingController textEditingController;
   final VoidCallback? onTap;
   final FocusNode focusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppPadding.p30.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(
+        // horizontal: AppPadding.p30.w,
+        vertical: 10.h,
+      ),
       child: TextFormField(
-        controller:textEditingController ,
+        controller: textEditingController,
         onTap: () {
           // Call onTap if provided
           onTap?.call();
@@ -24,7 +33,6 @@ class CustomTextFormFiled extends StatelessWidget {
             FocusScope.of(context).requestFocus(FocusNode());
           }
         },
-
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: TextStyle(
@@ -36,4 +44,3 @@ class CustomTextFormFiled extends StatelessWidget {
     );
   }
 }
-

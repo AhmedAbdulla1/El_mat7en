@@ -55,7 +55,7 @@ class _VeterinaryScreenState extends State<VeterinaryScreen> {
             children: [
               SizedBox(
                 width: 145,
-                height: 50,
+                height: 70,
                 child: TextFormField(
                   onTap: () {
                     _imageFromCamera();
@@ -76,7 +76,7 @@ class _VeterinaryScreenState extends State<VeterinaryScreen> {
                 ),
               ),
               const SizedBox(
-                height: 70,
+                height: 50,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -87,8 +87,8 @@ class _VeterinaryScreenState extends State<VeterinaryScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: 120,
-                      height: 50,
+                      width: 145,
+                      height: 70,
                       child: TextFormField(
                         onTap: () {},
                         decoration: InputDecoration(
@@ -106,8 +106,8 @@ class _VeterinaryScreenState extends State<VeterinaryScreen> {
                       ),
                     ),
                     SizedBox(
-                      width: 110,
-                      height: 50,
+                      width: 145,
+                      height: 70,
                       child: TextFormField(
                         onTap: () {},
                         decoration: InputDecoration(
@@ -128,11 +128,10 @@ class _VeterinaryScreenState extends State<VeterinaryScreen> {
                 ),
               ),
               const SizedBox(
-                height: 70,
+                height: 50,
               ),
               SizedBox(
                 width: 145,
-                height: 50,
                 child: TextFormField(
                   onTap: () {},
                   decoration: InputDecoration(

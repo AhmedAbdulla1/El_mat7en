@@ -20,6 +20,9 @@ class ModifyFarmScreen extends StatefulWidget {
 }
 
 class _ModifyFarmScreenState extends State<ModifyFarmScreen> {
+  TextEditingController data= TextEditingController();
+  TextEditingController image = TextEditingController();
+  TextEditingController id = TextEditingController();
   DateTime _selectDate = DateTime.now();
   String hint = 'تاريخ الميلاد';
   File? _image;
@@ -68,7 +71,7 @@ class _ModifyFarmScreenState extends State<ModifyFarmScreen> {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.only(
-                top: AppPadding.p30.h, bottom: AppPadding.p50.h),
+                top: AppPadding.p30.h, bottom: AppPadding.p70.h),
             child: const CustomAppBar(
               title: AppStrings.editFarm,
             ),
@@ -141,21 +144,33 @@ class _ModifyFarmScreenState extends State<ModifyFarmScreen> {
               onSelected: (val) {},
             ),
           ),
-          CustomTextFormFiled(
-            hintText: hint,
-            onTap: () {
-              _getDateFromUser();
-            },
+          Padding(
+            padding:  EdgeInsets.symmetric(horizontal:AppPadding.p30.w),
+            child: CustomTextFormFiled(
+              hintText: hint,
+              onTap: () {
+                _getDateFromUser();
+              },
+              textEditingController: data,
+            ),
           ),
-          CustomTextFormFiled(
-            hintText: 'id',
+          Padding(
+            padding:  EdgeInsets.symmetric(horizontal:AppPadding.p30.w),
+            child: CustomTextFormFiled(
+              hintText: 'id',
+              textEditingController: id,
+            ),
           ),
-          CustomTextFormFiled(
-            hintText: 'صورة',
-            onTap: () {
-              print('image');
-              _showPicker(context);
-            },
+          Padding(
+            padding:  EdgeInsets.symmetric(horizontal:AppPadding.p30.w),
+            child: CustomTextFormFiled(
+              hintText: 'صورة',
+              textEditingController: image,
+              onTap: () {
+                print('image');
+                _showPicker(context);
+              },
+            ),
           ),
         ],
       ),
