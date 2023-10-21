@@ -6,7 +6,7 @@ import 'package:tanta_app/presentation/feed_form/feed_form.dart';
 import 'package:tanta_app/presentation/feed_states/feed_states.dart';
 import 'package:tanta_app/presentation/hello_screen/hello_view.dart';
 import 'package:tanta_app/presentation/login_screen/view/login_view.dart';
-import 'package:tanta_app/presentation/farmer/farmer.dart';
+import 'package:tanta_app/presentation/farmer/main_view.dart';
 import 'package:tanta_app/presentation/resources/string_manager.dart';
 import 'package:tanta_app/presentation/splash_screen/splash_view.dart';
 

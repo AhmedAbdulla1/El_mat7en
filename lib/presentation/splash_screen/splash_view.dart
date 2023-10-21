@@ -68,20 +68,8 @@ class _SplashViewState extends State<SplashView> {
             children: [
               Expanded(
                 child: Image.asset(
-                  ImageAssets.splash1,
-                  height: 150.h,
-                ),
-              ),
-              Expanded(
-                child: Image.asset(
                   ImageAssets.splash2,
-                  height: 180.h,
-                ),
-              ),
-              Expanded(
-                child: Image.asset(
-                  ImageAssets.splash3,
-                  height: 180.h,
+                  // height: 180.h,
                 ),
               ),
             ],

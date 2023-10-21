@@ -124,15 +124,9 @@ class _LoginViewState extends State<LoginView> {
               customElevatedButton(
                 stream: _loginViewModel.outAreAllInputValid,
                 onPressed: () {
-                  print(_emailController.text);
-                  if(_emailController.text== emails[1]){
-                    Navigator.pushReplacementNamed(context, Routes.adminScreen);
-                  }
-                  else if(_emailController.text== emails[2]){
-                    Navigator.pushReplacementNamed(context, Routes.veterinaryScreen);
-                  }else
-                   { Navigator.pushReplacementNamed(context, Routes.farmerScreen);}
-                  _loginViewModel.login();
+
+                    Navigator.pushReplacementNamed(context, Routes.farmerScreen);
+
                 },
                 text: AppStrings.login,
               ),
