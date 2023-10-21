@@ -6,14 +6,14 @@ import 'package:tanta_app/presentation/common/reusable/custom_button.dart';
 import 'package:tanta_app/presentation/feed_form/widgets/custom_text_form_filed.dart';
 import 'package:tanta_app/presentation/feed_states/widgets/custom_app_bar.dart';
 
-class FeedForm extends StatefulWidget {
-  const FeedForm({super.key});
+class FeedInsuranceRequest extends StatefulWidget {
+  const FeedInsuranceRequest({super.key});
 
   @override
-  State<FeedForm> createState() => _FeedFormState();
+  State<FeedInsuranceRequest> createState() => _FeedInsuranceRequestState();
 }
 
-class _FeedFormState extends State<FeedForm> {
+class _FeedInsuranceRequestState extends State<FeedInsuranceRequest> {
   final TextEditingController maleCowController = TextEditingController();
   final TextEditingController femaleCowController = TextEditingController();
   final TextEditingController maleBuffaloController = TextEditingController();
