@@ -39,6 +39,7 @@ class CustomTextFormFiled extends StatelessWidget {
             fontSize: FontSize.s18,
             color: const Color(0xff7D7D7D),
           ),
+          contentPadding: EdgeInsets.only(left: 30.w),
         ),
       ),
     );
