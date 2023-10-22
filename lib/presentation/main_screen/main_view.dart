@@ -4,9 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_button.dart';
-import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
+import 'package:tanta_app/presentation/farm_modification_screen/modify.dart';
+
 import 'package:tanta_app/presentation/farm_modification_screen/modify_farm_screen.dart';
-import 'package:tanta_app/presentation/farmer/viewModel.dart';
+import 'package:tanta_app/presentation/main_screen/main_view_model.dart';
 import 'package:tanta_app/presentation/feed_form/feed_form.dart';
 import 'package:tanta_app/presentation/feed_states/feed_states.dart';
 import 'package:tanta_app/presentation/resources/assets_manager.dart';
@@ -93,7 +94,7 @@ class _FarmerScreenState extends State<FarmerScreen> {
           // Add your tab views/screens here
           ModifyFarmScreen(),
           FeedForm(),
-          FeedStates(),
+          Modify(),
           FeedStates(),
           // Add more screens for other tabs
         ],
