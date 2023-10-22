@@ -8,6 +8,7 @@ import 'package:tanta_app/feed_insurance_request/feed_insurance_request.dart';
 import 'package:tanta_app/presentation/administrative/administrative.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
 import 'package:tanta_app/presentation/feed_form/feed_form.dart';
+import 'package:tanta_app/presentation/feed_states/feed_states.dart';
 
 import 'package:tanta_app/presentation/login_screen/view/login_view.dart';
 
@@ -39,7 +40,7 @@ class _SplashViewState extends State<SplashView> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const FeedInsuranceRequest(),
+            builder: (context) => const FeedStates(),
           ),
         );
       },

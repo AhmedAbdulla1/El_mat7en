@@ -1,11 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tanta_app/feed_insurance_request/widgets/custom_kind_count.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_button.dart';
-import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
 import 'package:tanta_app/presentation/feed_form/widgets/custom_text_form_filed.dart';
 import 'package:tanta_app/presentation/feed_states/widgets/custom_app_bar.dart';
-import 'package:tanta_app/presentation/resources/string_manager.dart';
-import 'package:tanta_app/presentation/resources/values_manager.dart';
 
 class FeedForm extends StatefulWidget {
   const FeedForm({super.key});
@@ -15,148 +14,75 @@ class FeedForm extends StatefulWidget {
 }
 
 class _FeedFormState extends State<FeedForm> {
-  TextEditingController name = TextEditingController(),
-      nationalId = TextEditingController(),
-      village = TextEditingController(),
-      center = TextEditingController(),
-      government = TextEditingController(),
-      phone = TextEditingController();
-
+  final TextEditingController maleCowController = TextEditingController();
+  final TextEditingController femaleCowController = TextEditingController();
+  final TextEditingController maleBuffaloController = TextEditingController();
+  final TextEditingController femaleBuffaloController = TextEditingController();
+  final TextEditingController maleGoatController = TextEditingController();
+  final TextEditingController femaleGoatController = TextEditingController();
+  final TextEditingController maleCamelController = TextEditingController();
+  final TextEditingController femaleCamelController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
   @override
   void dispose() {
-    name.dispose();
-    nationalId.dispose();
-    village.dispose();
-    center.dispose();
-    government.dispose();
-    phone.dispose();
+    maleCowController.dispose();
+    femaleCowController.dispose();
+    maleBuffaloController.dispose();
+    femaleBuffaloController.dispose();
+    maleGoatController.dispose();
+    femaleGoatController.dispose();
+    maleCamelController.dispose();
+    femaleCamelController.dispose();
+    addressController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return customScaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: ListView(
-            // mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  top: AppPadding.p30.h,
-                  bottom: AppPadding.p70.h,
-                ),
-                child: const CustomAppBar(
-                  title: AppStrings.createOrder,
-                ),
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              CustomTextFormFiled(
-                  hintText: 'الاسم', textEditingController: name),
-              SizedBox(
-                height: 20.h,
-              ),
-              CustomTextFormFiled(
-                  hintText: 'الرقم القومى', textEditingController: nationalId),
-              SizedBox(
-                height: 20.h,
-              ),
-              Row(
-                textDirection: TextDirection.rtl,
-                children: [
-                  SizedBox(
-                    height: 100.h,
-                    width: 110.w,
-                    child: CustomTextFormFiled(
-                        hintText: 'قرية', textEditingController: village),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  SizedBox(
-                    height: 100.h,
-                    width: 110.w,
-                    child: CustomTextFormFiled(
-                        hintText: 'مركز', textEditingController: center),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  SizedBox(
-                    height: 100.h,
-                    width: 110.w,
-                    child: CustomTextFormFiled(
-                        hintText: 'محافظة', textEditingController: government),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              CustomTextFormFiled(
-                  hintText: 'رقم التليفون', textEditingController: phone),
-              SizedBox(
-                height: 70.h,
-              ),
-              customElevatedButtonWithoutStream(onPressed: () {}, text: 'طلب'),
-              SizedBox(
-                height: 20.h,
-              ),
-            ],
+    return Scaffold(
+      body: ListView(
+        children: [
+          const CustomAppBar(title: 'طلب نخاله'),
+          const Divider(
+            color: Colors.black,
+            thickness: 2,
           ),
-        ),
+          CustomKindCount(
+            title: 'جاموس',
+            male: maleBuffaloController,
+            female: femaleBuffaloController,
+          ),
+          CustomKindCount(
+            title: 'بقر',
+            male: maleCowController,
+            female: femaleCowController,
+          ),
+          CustomKindCount(
+            title: 'ماعز',
+            male: maleGoatController,
+            female: femaleGoatController,
+          ),
+          CustomKindCount(
+            title: 'جمل',
+            male: maleCamelController,
+            female: femaleCamelController,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: CustomTextFormFiled(
+              hintText: 'العنوان',
+              textEditingController: addressController,
+            ),
+          ),
+          customElevatedButtonWithoutStream(
+            onPressed: () {},
+            text: 'تقديم طلب',
+          ),
+          SizedBox(
+            height: 76.h,
+          ),
+        ],
       ),
     );
   }
 }
-
-// class CustomDropDownMaun extends StatefulWidget {
-//   const CustomDropDownMaun({super.key});
-
-//   @override
-//   State<CustomDropDownMaun> createState() => _CustomDropDownMaunState();
-// }
-
-// class _CustomDropDownMaunState extends State<CustomDropDownMaun> {
-//    List<String> items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
-//   String selectedItem = 'Item 1';
-//   @override
-//   Widget build(BuildContext context) {
-//     return
-//         Padding(
-//           padding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 10.h),
-//           child: Container(
-//             alignment: Alignment.center,
-//             height: 60,
-//             width: double.infinity,
-//             decoration: BoxDecoration(
-//               borderRadius: BorderRadius.circular(50.r),
-//               border: Border.all(
-//                 color: ColorManager.primary,
-//                 width: 3,
-//               ),
-//             ),
-//             child: DropdownButton<String>(
-//               value: selectedItem,
-//               onChanged: (String? newValue) {
-//                 // Update the parameter type to String?
-//                 setState(() {
-//                   selectedItem = newValue ??
-//                       items[
-//                           0]; // Use the null-aware operator to handle null values
-//                 });
-//               },
-//               items: items.map<DropdownMenuItem<String>>((String value) {
-//                 return DropdownMenuItem<String>(
-//                   value: value,
-//                   child: Text(value),
-//                 );
-//               }).toList(),
-//             ),
-//           ),
-//         );
-//   }
-// }
