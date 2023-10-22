@@ -42,7 +42,7 @@ class _FeedFormState extends State<FeedForm> {
     return Scaffold(
       body: ListView(
         children: [
-          const CustomAppBar(title: 'طلب نخاله'),
+          const CustomAppBar(title: 'طلب تأمين'),
           const Divider(
             color: Colors.black,
             thickness: 2,
