@@ -7,10 +7,11 @@ class CustomGenderCount extends StatelessWidget {
   const CustomGenderCount({
     super.key,
     required this.gender,
-    required this.genderController,
+    required this.genderController, this.fontSize,
   });
   final String gender;
   final TextEditingController genderController;
+  final double? fontSize;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -23,7 +24,7 @@ class CustomGenderCount extends StatelessWidget {
           gender,
           style: TextStyle(
             color: Colors.grey,
-            fontSize: FontSize.s22,
+            fontSize:fontSize?? FontSize.s22,
             fontWeight: FontWeight.bold,
           ),
         ),

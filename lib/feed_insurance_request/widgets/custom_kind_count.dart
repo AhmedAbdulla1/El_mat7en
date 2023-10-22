@@ -6,7 +6,9 @@ import 'package:tanta_app/presentation/resources/font_manager.dart';
 class CustomKindCount extends StatelessWidget {
   const CustomKindCount({
     super.key,
-    required this.title, required this.male, required this.female,
+    required this.title,
+    required this.male,
+    required this.female,
   });
   final String title;
   final TextEditingController male, female;
@@ -32,10 +34,10 @@ class CustomKindCount extends StatelessWidget {
           CustomGenderCount(
             genderController: female,
             gender: 'أنثى',
+            fontSize: 17.sp,
           ),
         ],
       ),
     );
   }
 }
-
