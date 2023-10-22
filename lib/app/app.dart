@@ -17,12 +17,15 @@ class MyApp extends StatelessWidget {
       designSize: const Size(390, 844),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder:(context,child)=> MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'المطاحن',
-        theme: getApplicationTheme(),
-        onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: Routes.splashScreen,
+      builder:(context,child)=> Directionality(
+        textDirection: TextDirection.rtl,
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'المطاحن',
+          theme: getApplicationTheme(),
+          onGenerateRoute: RouteGenerator.getRoute,
+          initialRoute: Routes.splashScreen,
+        ),
       ),
     );
   }

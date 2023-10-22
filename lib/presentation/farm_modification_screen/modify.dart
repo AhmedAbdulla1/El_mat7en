@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:tanta_app/presentation/farm_modification_screen/add_delete_head.dart';
 
 class Modify extends StatelessWidget {
@@ -12,35 +13,49 @@ class Modify extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () => Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => addHead(),)),
-              child: customContainerAsButtom('اضافة رأس')),
-            const SizedBox(height: 50,),
+                onTap: () => PersistentNavBarNavigator.pushNewScreen(
+                      context,
+                      withNavBar: false,
+                      screen: const AddDeleteHead(),
+                    ),
+                // Navigator.pushReplacement(
+                // context,
+                // MaterialPageRoute(
+                //   builder: (context) =>const  addHead(),
+                // )),
+                child: customContainerAsBottom('اضافة رأس',),),
+            const SizedBox(
+              height: 50,
+            ),
             GestureDetector(
-              onTap: () => Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => addHead(true),)),
-              child: customContainerAsButtom('حذف')),
-            
+              onTap: () =>PersistentNavBarNavigator.pushNewScreen(
+                context,
+                withNavBar: false,
+                screen: const AddDeleteHead(true),
+              ),
+              child: customContainerAsBottom(
+                'حذف',
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Container customContainerAsButtom(String txt) {
+  Container customContainerAsBottom(String txt) {
     return Container(
-            alignment: Alignment.center,
-    
-            width: 300,
-            height: 200,
-            decoration: BoxDecoration(
-              color: const Color(0xff8B6600),
-              borderRadius: BorderRadius.circular(40)
-            ),
-            child: Text(txt,style: const TextStyle(
-              color: Colors.black,
-              fontSize: 30,
-              fontWeight: FontWeight.bold
-              
-            ),),
-          );
+      alignment: Alignment.center,
+      width: 300,
+      height: 200,
+      decoration: BoxDecoration(
+          color: const Color(0xff8B6600),
+          borderRadius: BorderRadius.circular(40)),
+      child: Text(
+        txt,
+        style: const TextStyle(
+            color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
+      ),
+    );
   }
 }

@@ -6,7 +6,6 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_button.dart';
 import 'package:tanta_app/presentation/farm_modification_screen/modify.dart';
 
-import 'package:tanta_app/presentation/farm_modification_screen/modify_farm_screen.dart';
 import 'package:tanta_app/presentation/main_screen/main_view_model.dart';
 import 'package:tanta_app/presentation/feed_form/feed_form.dart';
 import 'package:tanta_app/presentation/feed_states/feed_states.dart';
@@ -39,6 +38,7 @@ class _FarmerScreenState extends State<FarmerScreen> {
       title: "تقديم الطلب",
       activeColorPrimary:  ColorManager.primary,
       inactiveColorPrimary: Colors.grey,
+
     ),
     PersistentBottomNavBarItem(
       icon: Image.asset(ImageAssets.trackOrder),
@@ -85,14 +85,12 @@ class _FarmerScreenState extends State<FarmerScreen> {
         centerTitle: true,
       ),
       body: PersistentTabView(
-
         context,
-
         controller: _controller,
         items: navBarItems,
         screens: const [
           // Add your tab views/screens here
-          ModifyFarmScreen(),
+          FeedForm(),
           FeedForm(),
           Modify(),
           FeedStates(),
@@ -105,74 +103,9 @@ class _FarmerScreenState extends State<FarmerScreen> {
         resizeToAvoidBottomInset: true,
         stateManagement: true,
         hideNavigationBarWhenKeyboardShows: true,
-        decoration: NavBarDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          colorBehindNavBar: Colors.black,
-        ),
+        // hideNavigationBar: true,
       ),
     );
   }
-}
 
-class CustomAlertDialog extends StatelessWidget {
-  const CustomAlertDialog({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            AppSize.s20.w,
-          ),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: AppPadding.p10.h,
-              ),
-              child: customElevatedButtonWithoutStream(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  Navigator.pushNamed(context, Routes.feedForm);
-                },
-                text: AppStrings.order1,
-                fontSize: 30,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: AppPadding.p10.h,
-              ),
-              child: customElevatedButtonWithoutStream(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  Navigator.pushNamed(context, Routes.feedForm);
-                },
-                text: AppStrings.order2,
-                fontSize: 30,
-              ),
-            ),
-          ],
-        ),
-        contentPadding: EdgeInsets.only(
-          left: AppPadding.p20.w,
-          right: AppPadding.p20.w,
-          top: AppPadding.p22.h,
-          bottom: 0,
-        ),
-        actions: [
-          textButton(
-            context: context,
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            text: AppStrings.close,
-          ),
-        ],
-      ),
-    );
-  }
 }

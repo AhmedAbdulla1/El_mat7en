@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tanta_app/app/di.dart';
 import 'package:tanta_app/presentation/administrative/administrative.dart';
-import 'package:tanta_app/presentation/farm_modification_screen/modify_farm_screen.dart';
 import 'package:tanta_app/presentation/feed_form/feed_form.dart';
 import 'package:tanta_app/presentation/feed_states/feed_states.dart';
 import 'package:tanta_app/presentation/hello_screen/hello_view.dart';
@@ -98,10 +97,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) {
           return const FeedStates();
         });
-      case Routes.modifyFarmScreen:
-        return MaterialPageRoute(
-          builder: (_) => const ModifyFarmScreen(),
-        );
+      // case Routes.modifyFarmScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => const ModifyFarmScreen(),
+      //   );
       case Routes.veterinaryScreen:
         return MaterialPageRoute(
           builder: (_) => const VeterinaryScreen(),
