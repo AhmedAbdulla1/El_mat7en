@@ -6,7 +6,7 @@ import 'package:tanta_app/presentation/resources/assets_manager.dart';
 final AppPreferences _appPreferences = instance<AppPreferences>();
 
 class Constant {
-  static const String baseurl = "https://doctorhunt.pythonanywhere.com/";
+  static const String baseurl = "https://app-mobile.tanta.edu.eg/";
   static const String empty = "";
   static const int userData = 0;
   static const int exercises = 1;

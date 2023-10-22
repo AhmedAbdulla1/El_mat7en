@@ -8,17 +8,7 @@ Widget customScaffold({
     textDirection: TextDirection.rtl,
     child: Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Container(
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(ImageAssets.backgroundImage,),
-            opacity: 0.2,
-            fit: BoxFit.fill,
-          ),
-        ),
-        child: body,
+      body: body,
       ),
-    ),
   );
 }
