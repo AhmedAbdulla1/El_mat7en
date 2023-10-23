@@ -23,6 +23,7 @@ class CustomTextFormFiled extends StatelessWidget {
         vertical: 10.h,
       ),
       child: TextFormField(
+        textDirection: TextDirection.rtl,
         controller: textEditingController,
         onTap: () {
           // Call onTap if provided

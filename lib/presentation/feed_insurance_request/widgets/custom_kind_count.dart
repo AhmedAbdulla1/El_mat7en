@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tanta_app/feed_insurance_request/widgets/custom_gender_count.dart';
+import 'package:tanta_app/presentation/feed_insurance_request/widgets/custom_gender_count.dart';
 import 'package:tanta_app/presentation/resources/font_manager.dart';
 
 class CustomKindCount extends StatelessWidget {

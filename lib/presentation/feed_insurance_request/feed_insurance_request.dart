@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tanta_app/feed_insurance_request/widgets/custom_kind_count.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_button.dart';
 import 'package:tanta_app/presentation/feed_form/widgets/custom_text_form_filed.dart';
+import 'package:tanta_app/presentation/feed_insurance_request/widgets/custom_kind_count.dart';
 import 'package:tanta_app/presentation/feed_states/widgets/custom_app_bar.dart';
+import 'package:tanta_app/presentation/resources/font_manager.dart';
 
 class FeedInsuranceRequest extends StatefulWidget {
   const FeedInsuranceRequest({super.key});
@@ -40,13 +40,25 @@ class _FeedInsuranceRequestState extends State<FeedInsuranceRequest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title:  Text(
+          'طلب تامين',
+          style: TextStyle(
+              color: Colors.black,
+              fontSize: 36.sp,
+              fontFamily: FontConstants.fontFamily
+            // fontWeight: FontWeight.bold
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: ()=>Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back,color: Colors.black,),
+        ),
+      ),
       body: ListView(
         children: [
-          const CustomAppBar(title: 'طلب تأمين'),
-          const Divider(
-            color: Colors.black,
-            thickness: 2,
-          ),
           CustomKindCount(
             title: 'جاموس',
             male: maleBuffaloController,
@@ -75,7 +87,9 @@ class _FeedInsuranceRequestState extends State<FeedInsuranceRequest> {
             ),
           ),
           customElevatedButtonWithoutStream(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             text: 'تقديم طلب',
           ),
           SizedBox(
