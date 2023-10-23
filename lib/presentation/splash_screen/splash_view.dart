@@ -16,7 +16,6 @@ import 'package:tanta_app/presentation/resources/constant.dart';
 import 'package:tanta_app/presentation/resources/routes_manager.dart';
 import 'package:tanta_app/presentation/resources/string_manager.dart';
 
-import '../farm_modification_screen/modify_farm_screen.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
