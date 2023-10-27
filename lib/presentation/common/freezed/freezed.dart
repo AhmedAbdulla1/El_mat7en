@@ -1,5 +1,4 @@
-
-
+import 'package:flutter/foundation.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'freezed.freezed.dart';
@@ -22,3 +21,19 @@ class ForgotPasswordObject with _$ForgotPasswordObject{
       )=_ForgotPasswordObject;
 }
 
+@freezed
+class InsuranceRequest with _$InsuranceRequest {
+  factory InsuranceRequest({
+  required final int requestNumber,
+  required final DateTime date,
+  }) = _InsuranceRequest;
+}
+
+
+@freezed
+class Committee with _$Committee {
+  factory Committee({
+    required final int committeeNumber,
+    required final DateTime date,
+  }) = _Committee;
+}
