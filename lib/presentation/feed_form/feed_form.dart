@@ -43,20 +43,23 @@ class _FeedFormState extends State<FeedForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text(
+        title: Text(
           'طلب نخالة',
           style: TextStyle(
               color: Colors.black,
               fontSize: 36.sp,
               fontFamily: FontConstants.fontFamily
-            // fontWeight: FontWeight.bold
-          ),
+              // fontWeight: FontWeight.bold
+              ),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
         leading: IconButton(
-          onPressed: ()=>Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back,color: Colors.black,),
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
         ),
       ),
       body: ListView(
@@ -89,7 +92,8 @@ class _FeedFormState extends State<FeedForm> {
             ),
           ),
           customElevatedButtonWithoutStream(
-            onPressed: () {},
+            onPressed: () {
+            },
             text: 'تقديم طلب',
           ),
           SizedBox(

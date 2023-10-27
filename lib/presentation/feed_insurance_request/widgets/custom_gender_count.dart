@@ -26,6 +26,7 @@ class CustomGenderCount extends StatelessWidget {
             color: Colors.grey,
             fontSize:fontSize?? FontSize.s22,
             fontWeight: FontWeight.bold,
+            
           ),
         ),
         SizedBox(
@@ -37,6 +38,8 @@ class CustomGenderCount extends StatelessWidget {
           child: CustomTextFormFiled(
             hintText: '0',
             textEditingController: genderController,
+            type: TextInputType.number,
+
           ),
         ),
       ],

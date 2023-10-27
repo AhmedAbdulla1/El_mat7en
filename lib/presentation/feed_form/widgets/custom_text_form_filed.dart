@@ -8,10 +8,12 @@ class CustomTextFormFiled extends StatelessWidget {
       {super.key,
       required this.hintText,
       this.onTap,
+      this.type ,
       required this.textEditingController});
 
   final String hintText;
   final TextEditingController textEditingController;
+  final TextInputType? type;
   final VoidCallback? onTap;
   final FocusNode focusNode = FocusNode();
 
@@ -25,6 +27,8 @@ class CustomTextFormFiled extends StatelessWidget {
       child: TextFormField(
         textDirection: TextDirection.rtl,
         controller: textEditingController,
+        keyboardType: type,
+        textAlign: TextAlign.center,
         onTap: () {
           // Call onTap if provided
           onTap?.call();
