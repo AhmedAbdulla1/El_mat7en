@@ -8,13 +8,13 @@ class CustomTextFormFiled extends StatelessWidget {
       {super.key,
       required this.hintText,
       this.onTap,
-      required this.textEditingController});
+      required this.textEditingController, this.readOnly});
 
   final String hintText;
   final TextEditingController textEditingController;
   final VoidCallback? onTap;
   final FocusNode focusNode = FocusNode();
-
+  final bool? readOnly;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,7 +23,13 @@ class CustomTextFormFiled extends StatelessWidget {
         vertical: 10.h,
       ),
       child: TextFormField(
+        readOnly:readOnly??false,
         controller: textEditingController,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'برجاء إدخال قيمه ';
+          }
+        },
         onTap: () {
           // Call onTap if provided
           onTap?.call();

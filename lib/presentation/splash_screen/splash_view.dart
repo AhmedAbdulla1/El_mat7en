@@ -39,7 +39,7 @@ class _SplashViewState extends State<SplashView> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const FeedForm(),
+            builder: (context) => const FeedInsuranceRequest(),
           ),
         );
       },
