@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:tanta_app/presentation/common/reusable/custom_button.dart';
 import 'package:tanta_app/presentation/feed_form/feed_form.dart';
 import 'package:tanta_app/presentation/feed_insurance_request/feed_insurance_request.dart';
 
@@ -13,31 +13,29 @@ class ApplyView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          GestureDetector(
-            onTap: () => PersistentNavBarNavigator.pushNewScreen(
-              context,
-              withNavBar: false,
-              screen: const FeedInsuranceRequest(),
-            ),
-            child: customContainerAsBottom('طلب تامين',),),
+          customElevatedButtonWithoutStream(
+              onPressed: () =>
+                  PersistentNavBarNavigator.pushNewScreen(
+                    context,
+                    withNavBar: false,
+                    screen: const FeedInsuranceRequest(),
+                  ),
+              text: 'طلب تامين'),
           const SizedBox(
             height: 50,
           ),
-          GestureDetector(
-            onTap: () =>PersistentNavBarNavigator.pushNewScreen(
-              context,
-              withNavBar: false,
-              screen: const FeedForm(),
-            ),
-            child: customContainerAsBottom(
-              'طلب نخالة',
-            ),
-          ),
+          customElevatedButtonWithoutStream(
+              onPressed: () =>
+                  PersistentNavBarNavigator.pushNewScreen(
+                    context,
+                    withNavBar: false,
+                    screen: const FeedForm(),
+                  ),  text: 'طلب نخاله'),
         ],
       ),
     );
-
   }
+
   Container customContainerAsBottom(String txt) {
     return Container(
       alignment: Alignment.center,

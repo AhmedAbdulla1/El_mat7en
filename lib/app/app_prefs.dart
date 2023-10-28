@@ -10,7 +10,7 @@ const String wifiKey = 'Wifi';
 const String exerciseKey = "ExerciseKey";
 const String trainingKey = "TrainingKey";
 const String token = "token";
-
+const String roleKey = 'role';
 class AppPreferences {
   final SharedPreferences _sharedPreferences;
 
@@ -48,17 +48,18 @@ class AppPreferences {
   void setPressKeyOnBoardingScreen(){
     _sharedPreferences.setBool(pressKeyOnBoardingScreen, true);
   }
-
+  void setRole(String role){
+    _sharedPreferences.setString(roleKey, role);
+  }
+  String? getRole(){
+    return _sharedPreferences.getString(roleKey);
+  }
   void setProfileImage(String image)  {
     _sharedPreferences.setString(profileImageKey, image);
   }
 
-  Future<void> setWifiData(List<String> data ) async {
-    _sharedPreferences.setStringList(profileImageKey, data);
-  }
-  List<String>? getWifiData() {
-    return _sharedPreferences.getStringList(profileImageKey,);
-  }
+
+
   Future<void> getProfileImage(String image) async {
     _sharedPreferences.getString(profileImageKey);
   }
@@ -67,13 +68,7 @@ class AppPreferences {
     return _sharedPreferences.getBool(pressKeyOnBoardingScreen) ?? false;
   }
 
-  Future<void> setTraining(List<String> trainingData) async {
-    _sharedPreferences.setStringList(trainingKey, trainingData);
-  }
 
-  List<String>? getTraining() {
-    return _sharedPreferences.getStringList(trainingKey);
-  }
 
   //login
   Future<void> setPressKeyLoginScreen() async {
