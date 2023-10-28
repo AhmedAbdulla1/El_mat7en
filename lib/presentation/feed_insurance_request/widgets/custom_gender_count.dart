@@ -43,6 +43,7 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
             color: Colors.grey,
             fontSize: widget.fontSize ?? FontSize.s22,
             fontWeight: FontWeight.bold,
+            
           ),
         ),
         SizedBox(
