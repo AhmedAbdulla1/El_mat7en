@@ -23,7 +23,7 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
   TextEditingController animalID = TextEditingController();
   @override
   void initState() {
-    widget.genderController.text = '0';
+    // widget.genderController.text = '0';
     super.initState();
   }
 
@@ -40,13 +40,11 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
           style: TextStyle(
             color: Colors.grey,
             fontSize: widget.fontSize ?? FontSize.s22,
-            fontWeight: FontWeight.bold,
-            
+            fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(
-          width: 50.w,
-        ),
+        
+        Spacer(),
         SizedBox(
           width: 73.w,
           height: 60.h,
@@ -59,16 +57,7 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
         SizedBox(
           width: 34.w,
         ),
-        SizedBox(
-          width: 130.w,
-          height: 45.h,
-          child: customElevatedButtonWithoutStream(
-            onPressed: () {
-              showDialog(context);
-            },
-            text: '+',
-          ),
-        ),
+      
       ],
     );
   }

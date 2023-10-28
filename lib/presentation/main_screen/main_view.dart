@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:tanta_app/app/app_prefs.dart';
+import 'package:tanta_app/app/di.dart';
 import 'package:tanta_app/presentation/apply/view.dart';
 import 'package:tanta_app/presentation/edit_data/view.dart';
 import 'package:tanta_app/presentation/farm_modification_screen/modify.dart';
@@ -20,6 +22,7 @@ class FarmerScreen extends StatefulWidget {
 
 class _FarmerScreenState extends State<FarmerScreen> {
   final MainViewModel _viewModel = MainViewModel();
+  final AppPreferences appPreferences = instance<AppPreferences>();
   final PersistentTabController _controller = PersistentTabController();
   List<String> appBarTitle = [
     "تقديم الطلبات",

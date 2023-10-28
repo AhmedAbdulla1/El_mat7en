@@ -7,11 +7,11 @@ class CustomTextFormFiled extends StatelessWidget {
       {super.key,
       required this.hintText,
       this.onTap,
-      required this.textEditingController,
-      this.readOnly});
+      required this.textEditingController, this.readOnly});
 
   final String hintText;
   final TextEditingController textEditingController;
+  final TextInputType? type;
   final VoidCallback? onTap;
   final FocusNode focusNode = FocusNode();
   final bool? readOnly;
