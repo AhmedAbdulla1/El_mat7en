@@ -47,12 +47,12 @@ class _FarmerScreenState extends State<FarmerScreen> {
       activeColorPrimary: ColorManager.primary,
       inactiveColorPrimary: Colors.grey,
     ),
-    PersistentBottomNavBarItem(
-      icon: Image.asset(ImageAssets.editData),
-      title: "تعديل البيانات",
-      activeColorPrimary: ColorManager.primary,
-      inactiveColorPrimary: Colors.grey,
-    ),
+    // PersistentBottomNavBarItem(
+    //   icon: Image.asset(ImageAssets.editData),
+    //   title: "تعديل البيانات",
+    //   activeColorPrimary: ColorManager.primary,
+    //   inactiveColorPrimary: Colors.grey,
+    // ),
   ];
 
   @override
@@ -88,7 +88,7 @@ class _FarmerScreenState extends State<FarmerScreen> {
           ApplyView(),
           FeedStates(),
           Modify(),
-          EditDataView(),
+          // EditDataView(),
           // Add more screens for other tabs
         ],
         confineInSafeArea: true,
