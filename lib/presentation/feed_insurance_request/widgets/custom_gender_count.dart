@@ -10,8 +10,6 @@ class CustomGenderCount extends StatefulWidget {
     required this.gender,
     required this.genderController,
     this.fontSize,
-
-
   });
   final String gender;
   final TextEditingController genderController;
@@ -35,7 +33,7 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
       textDirection: TextDirection.rtl,
       children: [
         SizedBox(
-          width: 46.w,
+          width: 45.w,
         ),
         Text(
           widget.gender,
@@ -47,7 +45,6 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
         ),
         SizedBox(
           width: 50.w,
-
         ),
         SizedBox(
           width: 73.w,
@@ -62,8 +59,8 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
           width: 34.w,
         ),
         SizedBox(
-          width: 120.w,
-          height: 33.h,
+          width: 130.w,
+          height: 45.h,
           child: customElevatedButtonWithoutStream(
             onPressed: () {
               showDialog(context);
@@ -74,6 +71,7 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
       ],
     );
   }
+
   Future<dynamic> showDialog(
     BuildContext context,
   ) {
@@ -114,7 +112,7 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
                           Navigator.pop(context);
                         }
                       },
-                      text: 'تقديم الطلب ',
+                      text: 'إضافه',
                     ),
                   ],
                 ),
@@ -125,5 +123,4 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
       },
     );
   }
-
 }

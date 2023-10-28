@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tanta_app/presentation/resources/font_manager.dart';
-import 'package:tanta_app/presentation/resources/values_manager.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
   CustomTextFormFiled(
       {super.key,
       required this.hintText,
       this.onTap,
-      required this.textEditingController, this.readOnly});
+      required this.textEditingController,
+      this.readOnly});
 
   final String hintText;
   final TextEditingController textEditingController;
@@ -23,8 +23,8 @@ class CustomTextFormFiled extends StatelessWidget {
         vertical: 10.h,
       ),
       child: TextFormField(
-        readOnly:readOnly??false,
-        textDirection: TextDirection.rtl,
+        readOnly: readOnly ?? false,
+        textDirection: TextDirection.ltr,
         controller: textEditingController,
         validator: (value) {
           if (value!.isEmpty) {
