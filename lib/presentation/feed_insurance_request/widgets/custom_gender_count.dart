@@ -10,11 +10,12 @@ class CustomGenderCount extends StatefulWidget {
     required this.gender,
     required this.genderController,
     this.fontSize,
+
+
   });
   final String gender;
   final TextEditingController genderController;
   final double? fontSize;
-
   @override
   State<CustomGenderCount> createState() => _CustomGenderCountState();
 }
@@ -46,6 +47,7 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
         ),
         SizedBox(
           width: 50.w,
+
         ),
         SizedBox(
           width: 73.w,
@@ -72,7 +74,6 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
       ],
     );
   }
-
   Future<dynamic> showDialog(
     BuildContext context,
   ) {
@@ -124,4 +125,5 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
       },
     );
   }
+
 }
