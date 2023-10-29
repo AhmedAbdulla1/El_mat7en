@@ -90,10 +90,9 @@ class _FarmerScreenState extends State<FarmerScreen> {
         items: navBarItems,
         screens:  [
           // Add your tab views/screens here
-          // ApplyView(),
-          RequestsStates(),
+          ApplyView(),
+          // RequestsStates(),
           FeedStates(),
-          
           Modify(),
           // EditDataView(),
           // Add more screens for other tabs

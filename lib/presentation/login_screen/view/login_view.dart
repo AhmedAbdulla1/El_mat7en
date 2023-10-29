@@ -130,13 +130,6 @@ class _LoginViewState extends State<LoginView> {
                 },
                 text: AppStrings.login,
               ),
-              customElevatedButton(
-                stream: _loginViewModel.outAreAllInputValid,
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, Routes.farmerScreen);
-                },
-                text: "الدخول كموظف",
-              ),
             ],
           ),
         ),
