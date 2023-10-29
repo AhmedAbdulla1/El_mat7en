@@ -9,24 +9,13 @@ class FeedStates extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
-      child: Column(
-        children: [
-          const CustomAppBar(title: 'متابعة الطلب'),
-          const Divider(
-            color: Colors.black,
-            thickness: 2,
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return const CustomFeedStateContainer();
-              },
-            ),
-          ),
-        ],
+    return  Expanded(
+      child: ListView.builder(
+        itemCount: 40,
+        itemBuilder: (context, index) {
+          return const CustomFeedStateContainer();
+        },
       ),
-    ));
+    );
   }
 }

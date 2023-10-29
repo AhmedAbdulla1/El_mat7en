@@ -4,8 +4,14 @@ import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tanta_app/app/app_prefs.dart';
+import 'package:tanta_app/data/data_source/local_data_source.dart';
+import 'package:tanta_app/data/data_source/remote_data_source.dart';
+import 'package:tanta_app/data/network/app_api.dart';
 import 'package:tanta_app/data/network/dio_factory.dart';
 import 'package:tanta_app/data/network/network_info.dart';
+import 'package:tanta_app/data/repository/repository_impl.dart';
+import 'package:tanta_app/domain/repository/repository.dart';
+import 'package:tanta_app/domain/usecase/login_usecase.dart';
 import 'package:tanta_app/presentation/login_screen/view_model/login_view_model.dart';
 
 final instance = GetIt.instance;
@@ -36,41 +42,46 @@ Future<void> initAppModule() async {
   );
 
   //instant for AppServicesClient
-  // instance.registerLazySingleton<AppServicesClient>(
-  //   () => AppServicesClient(),
-  // );
+  Dio dio = await instance<DioFactory>().getDio();
+  instance.registerLazySingleton<AppServicesClient>(
+    () => AppServicesClient(
+      dio,
+    ),
+  );
 //
   // instant for remoteDataSource
-  // instance.registerLazySingleton<RemoteDataSource>(
-  //   () => RemoteDataSourceImpl(
-  //     instance<AppServicesClient>(),
-  //   ),
-  // );
+  instance.registerLazySingleton<RemoteDataSource>(
+    () => RemoteDataSourceImpl(
+      instance<AppServicesClient>(),
+    ),
+  );
   // instance for local data source
   // instance.registerLazySingleton<LocalDataSource>(
   //   () => LocalDataSourceImpl(),
   // );
 //   //instant for repository
 
-  // instance.registerLazySingleton<Repository>(
-  //   () => RepositoryImpl(
-  //     instance<LocalDataSource>(),
-  //     instance<RemoteDataSource>(),
-  //     instance<NetWorkInfo>(),
-  //   ),
-  // );
+  instance.registerLazySingleton<Repository>(
+    () => RepositoryImpl(
+      // instance<LocalDataSource>(),
+      instance<RemoteDataSource>(),
+      instance<NetWorkInfo>(),
+    ),
+  );
 }
 initSplashModule(){}
 //
 initLoginModule() {
   if (!GetIt.I.isRegistered<LoginViewModel>()) {
-    // instance.registerFactory<LoginUseCase>(
-    //   () => LoginUseCase(
-    //     instance<Repository>(),
-    //   ),
-    // );
+    instance.registerFactory<LoginUseCase>(
+      () => LoginUseCase(
+        instance<Repository>(),
+      ),
+    );
     instance.registerFactory<LoginViewModel>(
-      () => LoginViewModel(),
+      () => LoginViewModel(
+          instance<LoginUseCase>(),
+      ),
     );
   }
 }

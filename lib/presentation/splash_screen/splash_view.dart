@@ -1,22 +1,13 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tanta_app/app/app_prefs.dart';
 import 'package:tanta_app/app/di.dart';
-import 'package:tanta_app/feed_insurance_request/feed_insurance_request.dart';
-import 'package:tanta_app/presentation/administrative/administrative.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
 import 'package:tanta_app/presentation/feed_form/feed_form.dart';
-
-import 'package:tanta_app/presentation/login_screen/view/login_view.dart';
-
 import 'package:tanta_app/presentation/resources/assets_manager.dart';
 import 'package:tanta_app/presentation/resources/constant.dart';
 import 'package:tanta_app/presentation/resources/routes_manager.dart';
-import 'package:tanta_app/presentation/resources/string_manager.dart';
 
-import '../farm_modification_screen/modify_farm_screen.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -35,13 +26,7 @@ class _SplashViewState extends State<SplashView> {
         seconds: AppConstant.timer,
       ),
       () {
-        // Navigator.pushReplacementNamed(context,Routes.helloScreen);
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const FeedInsuranceRequest(),
-          ),
-        );
+        Navigator.pushReplacementNamed(context,Routes.helloScreen);
       },
     );
   }
@@ -68,20 +53,8 @@ class _SplashViewState extends State<SplashView> {
             children: [
               Expanded(
                 child: Image.asset(
-                  ImageAssets.splash1,
-                  height: 150.h,
-                ),
-              ),
-              Expanded(
-                child: Image.asset(
                   ImageAssets.splash2,
-                  height: 180.h,
-                ),
-              ),
-              Expanded(
-                child: Image.asset(
-                  ImageAssets.splash3,
-                  height: 180.h,
+                  // height: 180.h,
                 ),
               ),
             ],

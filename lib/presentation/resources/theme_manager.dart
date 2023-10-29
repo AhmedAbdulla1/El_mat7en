@@ -8,7 +8,7 @@ import 'values_manager.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(
-    //farmer color
+    //main_screen color
     scaffoldBackgroundColor: ColorManager.white,
     primaryColor: ColorManager.primary,
     primaryColorLight: ColorManager.lightPrimary,

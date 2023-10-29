@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tanta_app/app/di.dart';
 import 'package:tanta_app/presentation/administrative/administrative.dart';
-import 'package:tanta_app/presentation/farm_modification_screen/modify_farm_screen.dart';
 import 'package:tanta_app/presentation/feed_form/feed_form.dart';
 import 'package:tanta_app/presentation/feed_states/feed_states.dart';
 import 'package:tanta_app/presentation/hello_screen/hello_view.dart';
 import 'package:tanta_app/presentation/login_screen/view/login_view.dart';
-import 'package:tanta_app/presentation/farmer/farmer.dart';
+import 'package:tanta_app/presentation/main_screen/main_view.dart';
 import 'package:tanta_app/presentation/resources/string_manager.dart';
 import 'package:tanta_app/presentation/splash_screen/splash_view.dart';
 
@@ -17,7 +16,7 @@ class Routes {
   static const String splashScreen = "/";
   static const String helloScreen = "/hello";
   static const String loginScreen = "/login";
-  static const String farmerScreen = '/farmer';
+  static const String farmerScreen = '/main_screen';
   static const String feedForm = '/feedForm';
   static const String feedStates = '/feedStates';
   static const String modifyFarmScreen = '/modifyFarmScreen';
@@ -28,7 +27,7 @@ class Routes {
   static const String recoverPasswordScreen = "/recoverPassword";
   static const String verifyCodeScreen = "/verifyCodeScreen";
   static const String changePasswordScreen = "/changePasswordScreen";
-  static const String mainScreen = "/farmer";
+  static const String mainScreen = "/main_screen";
   static const String searchScreen = '/searchScreen';
   static const String profileDetailsScreen = "/profileDetails";
   static const String settingScreen = "/setting";
@@ -98,10 +97,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) {
           return const FeedStates();
         });
-      case Routes.modifyFarmScreen:
-        return MaterialPageRoute(
-          builder: (_) => const ModifyFarmScreen(),
-        );
+      // case Routes.modifyFarmScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => const ModifyFarmScreen(),
+      //   );
       case Routes.veterinaryScreen:
         return MaterialPageRoute(
           builder: (_) => const VeterinaryScreen(),

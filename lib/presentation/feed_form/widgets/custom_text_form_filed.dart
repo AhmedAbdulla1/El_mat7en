@@ -23,7 +23,9 @@ class CustomTextFormFiled extends StatelessWidget {
         vertical: 10.h,
       ),
       child: TextFormField(
+
         readOnly:readOnly??false,
+        textDirection: TextDirection.rtl,
         controller: textEditingController,
         validator: (value) {
           if (value!.isEmpty) {

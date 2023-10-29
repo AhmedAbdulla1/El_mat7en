@@ -3,6 +3,7 @@ import 'dart:async';
 
 
 import 'package:tanta_app/app/di.dart';
+import 'package:tanta_app/domain/usecase/login_usecase.dart';
 import 'package:tanta_app/presentation/base/base_view_model.dart';
 import 'package:tanta_app/presentation/common/freezed/freezed.dart';
 import 'package:tanta_app/presentation/common/state_render/state_render.dart';
@@ -26,8 +27,8 @@ class LoginViewModel extends  LoginViewModelOutput {
   final StreamController<bool> isUserLoginSuccessfullyStreamController =
       StreamController.broadcast();
   LoginObject _loginObject = LoginObject('', '');
-  // final LoginUseCase _loginUseCase;
-  LoginViewModel();
+  final LoginUseCase _loginUseCase;
+  LoginViewModel(this._loginUseCase);
   bool visible=false;
   @override
 
@@ -65,32 +66,33 @@ class LoginViewModel extends  LoginViewModelOutput {
 
   @override
   login() async {
-    // inputState.add(
-    //   LoadingState(
-    //     stateRenderType: StateRenderType.popupLoadingState,
-    //   ),
-    // );
-    // (await _loginUseCase.execute(
-    //   LoginUseCaseInput(
-    //     email: _loginObject.email,
-    //     password: _loginObject.password,
-    //   ),
-    // )).fold((failure) {
-    //   inputState.add(
-    //     ErrorState(
-    //       stateRenderType: StateRenderType.popupErrorState,
-    //       message: failure.message,
-    //     ),
-    //   );
-    // }, (data) async{
-    //   await _appPreferences.setToken(data.user!.uid);
-    //   print("uid ${_appPreferences.getToken()}");
-    //   inputState.add(
-    //     ContentState(),
-    //   );
-    //
-    //   isUserLoginSuccessfullyStreamController.add(true);
-    // });
+    inputState.add(
+      LoadingState(
+        stateRenderType: StateRenderType.popupLoadingState,
+      ),
+    );
+    (await _loginUseCase.execute(
+      LoginUseCaseInput(
+        email: _loginObject.email,
+        password: _loginObject.password,
+      ),
+    )).fold((failure) {
+      inputState.add(
+        ErrorState(
+          stateRenderType: StateRenderType.popupErrorState,
+          message: failure.message,
+        ),
+      );
+    }, (data) async{
+      print(data);
+      // await _appPreferences.setToken(data.user!.uid);
+      // print("uid ${_appPreferences.getToken()}");
+      inputState.add(
+        ContentState(),
+      );
+
+      isUserLoginSuccessfullyStreamController.add(true);
+    });
   }
 
   @override

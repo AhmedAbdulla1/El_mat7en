@@ -5,14 +5,15 @@ const String jsonPath = "assets/json";
 class ImageAssets{
   static const  String backgroundImage = '$imagePath/background.jpg';
   static const  String appLogo ="$imagePath/logo.svg";
-  static const  String splash1 ="$imagePath/tanta_university_logo.png";
   static const  String splash2 ='$imagePath/administrative_oversight.png';
-  static const  String splash3 ='$imagePath/ministry_of_supply_and_internal_trade.png';
 
-  // static const  String google= '$imagePath/google.svg';
-  // static const  String grad= '$imagePath/grad.png';
-  // static const  String toothDentist= '$imagePath/toothDentist.png';
-  // static const  String heartDentist= '$imagePath/heartDentist.png';
+
+  static const  String order= '$imagePath/order.svg';
+  static const  String editFarm= '$imagePath/edit_farm.png';
+  static const  String editData= '$imagePath/edit_data.png';
+  static const  String trackOrder= '$imagePath/track_order.png';
+
+
   // static const  String eayDentist= '$imagePath/eayDentist.png';
   // static const  String slimmingDentist= '$imagePath/slimmingDentist.png';
 
