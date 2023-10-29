@@ -14,7 +14,8 @@ class ApplyView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           customElevatedButtonWithoutStream(
-              onPressed: () => PersistentNavBarNavigator.pushNewScreen(
+              onPressed: () =>
+                  PersistentNavBarNavigator.pushNewScreen(
                     context,
                     withNavBar: false,
                     screen: const FeedInsuranceRequest(),
@@ -24,7 +25,12 @@ class ApplyView extends StatelessWidget {
             height: 50,
           ),
           customElevatedButtonWithoutStream(
-              onPressed: () {}, text: 'طلب نخاله'),
+              onPressed: () =>
+                  PersistentNavBarNavigator.pushNewScreen(
+                    context,
+                    withNavBar: false,
+                    screen: const FeedForm(),
+                  ),  text: 'طلب نخاله'),
         ],
       ),
     );
