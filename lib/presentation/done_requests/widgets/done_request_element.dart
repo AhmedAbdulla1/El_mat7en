@@ -12,7 +12,7 @@ class RequestsContainerElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       textDirection: TextDirection.rtl,
       children: [
         Text(

@@ -3,8 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
-import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
+import 'package:intl/intl.dart' as intl;
 import 'package:tanta_app/presentation/resources/color_manager.dart';
 import 'package:tanta_app/presentation/resources/values_manager.dart';
 
@@ -30,7 +29,7 @@ class _addHeadState extends State<addHead> {
   final ImagePicker _imagePicker = ImagePicker();
 
   DateTime _selectDate = DateTime.now();
-  String hint = DateFormat('yyyy-MM-d').format(DateTime.now()).toString();
+  String hint = intl.DateFormat('yyyy-MM-d').format(DateTime.now()).toString();
 
   _getDateFromUser() async {
     DateTime? pickedDate = await showDatePicker(
@@ -58,7 +57,7 @@ class _addHeadState extends State<addHead> {
     if (pickedDate != null) {
       setState(() {
         _selectDate = pickedDate;
-        hint = DateFormat.yMd().format(_selectDate);
+        hint = intl.DateFormat.yMd().format(_selectDate);
       });
     } else {
       debugPrint('null or something wrong');
@@ -87,25 +86,77 @@ class _addHeadState extends State<addHead> {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              children: <Widget>[
-                if (widget.isDelete)
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: Column(
+
+          children: [
+            Expanded(
+              child: ListView(
+                children: <Widget>[
+                  if (widget.isDelete)
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppPadding.p10.w,
+                      ),
+                      child: const Text(
+                        'سبب الحذف',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  if (widget.isDelete)
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppPadding.p40.w,
+                        vertical: AppPadding.p5.w,
+                      ),
+                      child: DropdownMenu(
+                        width: MediaQuery.sizeOf(context).width - 80.w,
+                        label: Text(
+                          deletedList[0],
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                        textStyle: Theme.of(context).textTheme.displayMedium,
+                        dropdownMenuEntries: deletedList
+                            .map(
+                              (item) => DropdownMenuEntry(
+                                style: const ButtonStyle(
+                                  padding: MaterialStatePropertyAll(
+                                    EdgeInsets.only(
+                                      right: 10,
+                                      left: 10,
+                                    ),
+                                  ),
+                                  fixedSize:
+                                      MaterialStatePropertyAll(Size(270, 1)),
+                                ),
+                                value: item,
+                                label: item,
+                              ),
+                            )
+                            .toList(),
+                        onSelected: (val) {
+                          // setState(() {
+                          //   selected = val!;
+                          // });
+                        },
+                      ),
+                    ),
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: AppPadding.p10.w,
                     ),
                     child: const Text(
-                      'سبب الحذف',
+                      'النوع',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 25,
                           fontWeight: FontWeight.w500),
                     ),
                   ),
-                if (widget.isDelete)
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: AppPadding.p40.w,
@@ -114,11 +165,11 @@ class _addHeadState extends State<addHead> {
                     child: DropdownMenu(
                       width: MediaQuery.sizeOf(context).width - 80.w,
                       label: Text(
-                        deletedList[0],
+                        items[1],
                         style: Theme.of(context).textTheme.displayMedium,
                       ),
                       textStyle: Theme.of(context).textTheme.displayMedium,
-                      dropdownMenuEntries: deletedList
+                      dropdownMenuEntries: items
                           .map(
                             (item) => DropdownMenuEntry(
                               style: const ButtonStyle(
@@ -128,8 +179,7 @@ class _addHeadState extends State<addHead> {
                                     left: 10,
                                   ),
                                 ),
-                                fixedSize:
-                                    MaterialStatePropertyAll(Size(270, 1)),
+                                fixedSize: MaterialStatePropertyAll(Size(270, 1)),
                               ),
                               value: item,
                               label: item,
@@ -143,193 +193,146 @@ class _addHeadState extends State<addHead> {
                       },
                     ),
                   ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: AppPadding.p10.w,
-                  ),
-                  child: const Text(
-                    'النوع',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: AppPadding.p40.w,
-                    vertical: AppPadding.p5.w,
-                  ),
-                  child: DropdownMenu(
-                    width: MediaQuery.sizeOf(context).width - 80.w,
-                    label: Text(
-                      items[1],
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                    textStyle: Theme.of(context).textTheme.displayMedium,
-                    dropdownMenuEntries: items
-                        .map(
-                          (item) => DropdownMenuEntry(
-                            style: const ButtonStyle(
-                              padding: MaterialStatePropertyAll(
-                                EdgeInsets.only(
-                                  right: 10,
-                                  left: 10,
-                                ),
-                              ),
-                              fixedSize: MaterialStatePropertyAll(Size(270, 1)),
-                            ),
-                            value: item,
-                            label: item,
-                          ),
-                        )
-                        .toList(),
-                    onSelected: (val) {
-                      // setState(() {
-                      //   selected = val!;
-                      // });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: AppPadding.p10.w,
-                  ),
-                  child: const Text(
-                    'الجنس',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: AppPadding.p40.w,
-                    vertical: AppPadding.p5.w,
-                  ),
-                  child: DropdownMenu(
-                    width: MediaQuery.sizeOf(context).width - 80.w,
-                    label: Text(
-                      list[0],
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                    textStyle: Theme.of(context).textTheme.displayMedium,
-                    dropdownMenuEntries: list
-                        .map((item) => DropdownMenuEntry(
-                            style: const ButtonStyle(
-                              textStyle: MaterialStatePropertyAll(TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w600,
-                              )),
-                              padding: MaterialStatePropertyAll(
-                                EdgeInsets.only(
-                                  right: 10,
-                                  left: 10,
-                                ),
-                              ),
-                            ),
-                            value: item,
-                            label: item))
-                        .toList(),
-                    onSelected: (val) {},
-                  ),
-                ),
-                if (!widget.isDelete)
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: AppPadding.p10.w,
                     ),
                     child: const Text(
-                      'تاريخ الميلاد',
+                      'الجنس',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 25,
                           fontWeight: FontWeight.w500),
                     ),
                   ),
-                if (!widget.isDelete)
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: AppPadding.p40.w,
                       vertical: AppPadding.p5.w,
                     ),
-                    child: CustomTextFormFiled(
-                      hintText: hint,
-                      onTap: () {
-                        _getDateFromUser();
-                      },
-                      textEditingController: data,
+                    child: DropdownMenu(
+                      width: MediaQuery.sizeOf(context).width - 80.w,
+                      label: Text(
+                        list[0],
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                      textStyle: Theme.of(context).textTheme.displayMedium,
+                      dropdownMenuEntries: list
+                          .map((item) => DropdownMenuEntry(
+                              style: const ButtonStyle(
+                                textStyle: MaterialStatePropertyAll(TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                                padding: MaterialStatePropertyAll(
+                                  EdgeInsets.only(
+                                    right: 10,
+                                    left: 10,
+                                  ),
+                                ),
+                              ),
+                              value: item,
+                              label: item))
+                          .toList(),
+                      onSelected: (val) {},
                     ),
                   ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: AppPadding.p10.w,
+                  if (!widget.isDelete)
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppPadding.p10.w,
+                      ),
+                      child: const Text(
+                        'تاريخ الميلاد',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  if (!widget.isDelete)
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppPadding.p40.w,
+                        vertical: AppPadding.p5.w,
+                      ),
+                      child: CustomTextFormFiled(
+                        hintText: hint,
+                        onTap: () {
+                          _getDateFromUser();
+                        },
+                        textEditingController: data,
+                      ),
+                    ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppPadding.p10.w,
+                    ),
+                    child: const Text(
+                      'رقم الدبلة',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
-                  child: const Text(
-                    'رقم الدبلة',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: AppPadding.p40.w),
+                    child: CustomTextFormFiled(
+                      hintText: '---',
+                      textEditingController: id,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: AppPadding.p40.w),
-                  child: CustomTextFormFiled(
-                    hintText: '---',
-                    textEditingController: id,
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppPadding.p10.w,
+                    ),
+                    child: const Text(
+                      'صورة الدبلة',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: AppPadding.p10.w,
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: AppPadding.p40.w),
+                    child: CustomTextFormFiled(
+                      hintText: 'اضافة صورة',
+                      textEditingController: image,
+                      onTap: () {
+                        print('image');
+                        _showPicker(context);
+                      },
+                    ),
                   ),
-                  child: const Text(
-                    'صورة الدبلة',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: AppPadding.p40.w),
-                  child: CustomTextFormFiled(
-                    hintText: 'اضافة صورة',
-                    textEditingController: image,
-                    onTap: () {
-                      print('image');
-                      _showPicker(context);
-                    },
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Container(
-            color: Colors.transparent,
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                height: 100,
-                color: Colors.transparent,
-                child: Center(
-                  child: SizedBox(
-                    width: 300,
-                    height: 65,
-                    child: ElevatedButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: Text(
-                        widget.isDelete ? 'حذف' : 'اضافة',
+            Container(
+              color: Colors.transparent,
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  height: 100,
+                  color: Colors.transparent,
+                  child: Center(
+                    child: SizedBox(
+                      width: 300,
+                      height: 65,
+                      child: ElevatedButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text(
+                          widget.isDelete ? 'حذف' : 'اضافة',
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

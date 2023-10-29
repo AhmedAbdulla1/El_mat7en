@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tanta_app/presentation/common/freezed/freezed.dart';
-import 'package:tanta_app/presentation/request_states/widgets/custom_request_state_container.dart';
+import 'package:tanta_app/presentation/done_requests/widgets/custom_request_done_container.dart';
 
-class RequestsStates extends StatelessWidget {
-  RequestsStates({super.key});
+class RequestsDone extends StatelessWidget {
+  RequestsDone({super.key});
 
   final List<InsuranceRequest> requests = [
     InsuranceRequest(requestNumber: 5, date: DateTime.now()),

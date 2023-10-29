@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart' as intl;
-import 'package:tanta_app/presentation/committee_states/widgets/committee_state_element.dart';
 import 'package:tanta_app/presentation/common/freezed/freezed.dart';
+import 'package:tanta_app/presentation/request_states/widgets/request_state_element.dart';
 import 'package:tanta_app/presentation/resources/color_manager.dart';
 
-class CustomCommitteesStateContainer extends StatelessWidget {
-  const CustomCommitteesStateContainer({super.key, required this.committee});
+class CustomRequestsStateContainer extends StatelessWidget {
+  const CustomRequestsStateContainer({super.key, required this.request});
 
-  final Committee committee;
+  final InsuranceRequest request;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class CustomCommitteesStateContainer extends StatelessWidget {
       child: Align(
         child: Container(
           width: 281.w,
-          // height: 125.h,
+          height: 125.h,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(24.r),
@@ -29,15 +29,19 @@ class CustomCommitteesStateContainer extends StatelessWidget {
           child: Column(
             textDirection: TextDirection.rtl,
             children: [
-              committeesContainerElement(
-                text1: ' : رقم اللجنه',
-                text2: committee.committeeNumber.toString(),
+              RequestsContainerElement(
+                text1: ' : رقم الطلب',
+                text2: request.requestNumber.toString(),
               ),
-              committeesContainerElement(
+              RequestsContainerElement(
                 text1: ' : تاريخ الطلب',
-                text2: intl.DateFormat('yyyy,mm,d')
-                    .format(committee.date)
+                text2: intl.DateFormat('yyyy / mm /d')
+                    .format(request.date)
                     .toString(),
+              ),
+              const RequestsContainerElement(
+                text1: ' : حالة الطلب',
+                text2: 'تم',
               ),
             ],
           ),
