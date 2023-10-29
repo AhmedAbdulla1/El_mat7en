@@ -13,6 +13,8 @@ import 'package:tanta_app/presentation/resources/assets_manager.dart';
 import 'package:tanta_app/presentation/resources/color_manager.dart';
 import 'package:tanta_app/presentation/resources/font_manager.dart';
 
+import '../committee_states/request_states.dart';
+
 class FarmerScreen extends StatefulWidget {
   const FarmerScreen({Key? key}) : super(key: key);
 
@@ -86,10 +88,12 @@ class _FarmerScreenState extends State<FarmerScreen> {
         context,
         controller: _controller,
         items: navBarItems,
-        screens: const [
+        screens:  [
           // Add your tab views/screens here
-          ApplyView(),
+          // ApplyView(),
+          RequestsStates(),
           FeedStates(),
+          
           Modify(),
           // EditDataView(),
           // Add more screens for other tabs

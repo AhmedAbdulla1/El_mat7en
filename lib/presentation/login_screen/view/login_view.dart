@@ -32,8 +32,7 @@ class _LoginViewState extends State<LoginView> {
 
   List<String> emails= [
     'ahmed@gmail.com',
-    'admin@gmail.com',
-    'veterinary@gmail.com',
+    'staf@gmail.com',
   ];
 
   bool visible = true;
@@ -54,7 +53,7 @@ class _LoginViewState extends State<LoginView> {
         .listen((isLoading) {
       if (isLoading) {
         SchedulerBinding.instance.addPostFrameCallback((_) {
-          _appPreferences.setPressKeyLoginScreen();
+          _appPreferences.setRole('admin');
           debugPrint(_appPreferences.getToken());
           Navigator.pushReplacementNamed(context, Routes.mainScreen);
         });

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tanta_app/presentation/common/freezed/freezed.dart';
-import 'package:tanta_app/presentation/requests_state/widgets/feed_state_element.dart';
+import 'package:tanta_app/presentation/request_states/widgets/request_state_element.dart';
 import 'package:tanta_app/presentation/resources/color_manager.dart';
 
 class CustomRequestsStateContainer extends StatelessWidget {
