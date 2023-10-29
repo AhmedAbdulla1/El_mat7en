@@ -48,7 +48,7 @@ ThemeData getApplicationTheme() {
 
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
-            AppSize.s50,
+            AppSize.s5,
           ),
         ),
       ),
@@ -144,14 +144,14 @@ ThemeData getApplicationTheme() {
           width: AppSize.s5
         ),
         borderRadius: BorderRadius.circular(
-          AppSize.s50,
+          AppSize.s10,
         ),
       ),
 
       //focused Border style
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(
-          AppSize.s50,
+          AppSize.s10,
         ),
         borderSide: BorderSide(
           color: ColorManager.primary,
@@ -162,7 +162,7 @@ ThemeData getApplicationTheme() {
       //error border style
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(
-          AppSize.s50,
+          AppSize.s10,
         ),
         borderSide: BorderSide(
           color: ColorManager.textFormErrorBorder,
@@ -173,7 +173,7 @@ ThemeData getApplicationTheme() {
       //focused error border style
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(
-          AppSize.s50,
+          AppSize.s10,
         ),
         borderSide: BorderSide(
           color: ColorManager.primary,
