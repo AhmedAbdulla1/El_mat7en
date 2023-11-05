@@ -13,7 +13,7 @@ class _AppServicesClient implements AppServicesClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://app-mobile.tanta.edu.eg/';
+    baseUrl ??= 'https://app-mobile.tanta.edu.eg/api/';
   }
 
   final Dio _dio;
@@ -40,7 +40,7 @@ class _AppServicesClient implements AppServicesClient {
     )
             .compose(
               _dio.options,
-              'api/Userstbls',
+              'People/GetPeopleByEmail_and_Password',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -50,68 +50,6 @@ class _AppServicesClient implements AppServicesClient {
               baseUrl,
             ))));
     final value = LoginAuthenticationResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<SendEmailResponse> forgotPassword(String email) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = {'email': email};
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<SendEmailResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/users/sendemail/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = SendEmailResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<AuthenticationResponse> register(
-    String userName,
-    String email,
-    String password,
-  ) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = {
-      'username': userName,
-      'email': email,
-      'password': password,
-    };
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<AuthenticationResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/users/register/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = AuthenticationResponse.fromJson(_result.data!);
     return value;
   }
 

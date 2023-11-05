@@ -11,10 +11,10 @@ abstract class RemoteDataSource {
   Future<LoginAuthenticationResponse> loginResponse(
     LoginRequest loginRequest,
   );
-  Future<SendEmailResponse> sendEmailResponse(String email);
-  Future<AuthenticationResponse> registerResponse(
-      RegisterRequest registerRequest,
-      );
+  // Future<SendEmailResponse> sendEmailResponse(String email);
+  // Future<AuthenticationResponse> registerResponse(
+  //     RegisterRequest registerRequest,
+  //     );
   // Future<HomeResponse>homeResponse();
   // Future<StoresDetailsResponse>storeDetailsResponse();
 
@@ -36,21 +36,14 @@ class RemoteDataSourceImpl extends RemoteDataSource {
       loginRequest.password,
     );
   }
-  @override
-  Future<AuthenticationResponse> registerResponse(RegisterRequest registerRequest)async {
-    return await _appServicesClient.register(
-      registerRequest.name,
-      registerRequest.email,
-      registerRequest.password,
-    );
-  }
 
-  @override
-  Future<SendEmailResponse> sendEmailResponse(String email) async{
-    return await _appServicesClient.forgotPassword(
-      email
-    );
-  }
+
+  // @override
+  // Future<SendEmailResponse> sendEmailResponse(String email) async{
+  //   return await _appServicesClient.forgotPassword(
+  //     email
+  //   );
+  // }
   // @override
   // Future<HomeResponse> homeResponse()async {
   //   return await _appServicesClient.home();

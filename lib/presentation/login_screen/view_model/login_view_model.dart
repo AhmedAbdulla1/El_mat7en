@@ -85,8 +85,8 @@ class LoginViewModel extends  LoginViewModelOutput {
       );
     }, (data) async{
       print(data);
-      // await _appPreferences.setToken(data.user!.uid);
-      // print("uid ${_appPreferences.getToken()}");
+      await _appPreferences.setToken(data.token);
+      print("id ${_appPreferences.getToken()}");
       inputState.add(
         ContentState(),
       );

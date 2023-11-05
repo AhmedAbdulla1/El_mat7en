@@ -21,21 +21,12 @@ class UserDataResponse {
   String? username;
   @JsonKey(name: "phone_number")
   String? phoneNumber;
-  @JsonKey(name: "image")
-  String? image;
-  @JsonKey(name: "location")
-  String? location;
-  @JsonKey(name: "date_birth")
-  String? dateBirth;
 
   UserDataResponse(
     this.id,
     this.email,
     this.username,
     this.phoneNumber,
-    this.image,
-    this.location,
-    this.dateBirth,
   );
   //form json
   factory UserDataResponse.fromJson(Map<String, dynamic> json) =>
@@ -63,15 +54,14 @@ class AuthenticationResponse extends BaseResponse {
   Map<String, dynamic> toJson() => _$AuthenticationResponseToJson(this);
 }
 
-
 @JsonSerializable()
 class LoginAuthenticationResponse extends BaseResponse {
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'ID')
   int? id;
-  @JsonKey(name: 'token')
-  String? token;
+  @JsonKey(name: 'IDAuthorties')
+  int? iDAuthor;
 
-  LoginAuthenticationResponse(this.id,this.token,);
+  LoginAuthenticationResponse(this.id,this.iDAuthor,);
 
 
   //form json

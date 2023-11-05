@@ -89,12 +89,12 @@ class AppPreferences {
   }
 
   //token
-  Future<void> setToken(String t) async {
-    _sharedPreferences.setString(token, t);
+  Future<void> setToken(int t) async {
+    _sharedPreferences.setInt(token, t);
   }
 
-  String getToken() {
-    return _sharedPreferences.getString(token) ?? '';
+  int getToken() {
+    return _sharedPreferences.getInt(token) ?? 0;
   }
 
   // logout

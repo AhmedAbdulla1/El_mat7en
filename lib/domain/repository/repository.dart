@@ -8,9 +8,9 @@ abstract class Repository {
   Future<Either<Failure, LoginAuthentication>> login(
       LoginRequest loginRequest);
 
-  Future<Either<Failure, Authentication>> register(
-      RegisterRequest registerRequest);
-  Future<Either<Failure,SendEmail>>sendEmail(String email);
+  // Future<Either<Failure, Authentication>> register(
+  //     RegisterRequest registerRequest);
+  // Future<Either<Failure,SendEmail>>sendEmail(String email);
   Future<Either<Failure,String>>checkOtp(String otp);
   Future<Either<Failure, String>> forgotPassword(String email);
 

@@ -8,11 +8,8 @@ extension UserDataResponseMapper on UserDataResponse? {
     return UserData(
       id: this?.id.orZero() ?? 0,
       email: this?.email.orEmpty() ?? Constant.empty,
-      username: this?.image.orEmpty() ?? Constant.empty,
+      username: this?.username.orEmpty() ?? Constant.empty,
       phoneNumber: this?.phoneNumber.orEmpty() ?? Constant.empty,
-      image: this?.image.orEmpty() ?? Constant.empty,
-      location: this?.location.orEmpty() ?? Constant.empty,
-      dateBirth: this?.dateBirth.orEmpty() ?? Constant.empty,
     );
   }
 }
@@ -29,7 +26,7 @@ extension LoginAuthenticationMapper on LoginAuthenticationResponse? {
   LoginAuthentication toDomain() {
     return LoginAuthentication(
       id: this?.id.orZero() ?? Constant.zero,
-      token: this?.token.orEmpty() ?? Constant.empty,
+      token: this?.iDAuthor.orZero() ?? Constant.zero,
     );
   }
 }
