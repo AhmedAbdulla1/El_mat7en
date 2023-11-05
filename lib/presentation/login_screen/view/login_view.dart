@@ -55,7 +55,7 @@ class _LoginViewState extends State<LoginView> {
         SchedulerBinding.instance.addPostFrameCallback((_) {
           _appPreferences.setRole('admin');
           // debugPrint(_appPreferences.getToken());
-          Navigator.pushReplacementNamed(context, Routes.mainScreen);
+          Navigator.pushReplacementNamed(context, Routes.farmerScreen);
         });
       }
     });
@@ -115,7 +115,7 @@ class _LoginViewState extends State<LoginView> {
               textButton(
                 context: context,
                 onPressed: () {
-                  _loginViewModel.login();
+
                   // Navigator.pushNamed(context, Routes.recoverPasswordScreen);
                 },
                 text: AppStrings.forgotPassword,
@@ -125,8 +125,8 @@ class _LoginViewState extends State<LoginView> {
               customElevatedButton(
                 stream: _loginViewModel.outAreAllInputValid,
                 onPressed: () {
-
-                    Navigator.pushReplacementNamed(context, Routes.farmerScreen);
+                  _loginViewModel.login();
+                    // Navigator.pushReplacementNamed(context, Routes.farmerScreen);
 
                 },
                 text: AppStrings.login,

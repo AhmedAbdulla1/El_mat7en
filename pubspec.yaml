@@ -81,7 +81,7 @@ flutter:
     - assets/images/
     - assets/images/edit_data.png
     - assets/images/edit_farm.png
-
+    - assets/json
 
   # An images asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
