@@ -14,20 +14,24 @@ class RepositoryImpl implements Repository {
   final RemoteDataSource _remoteDataSource;
   final NetWorkInfo _networkInfo;
 
-  RepositoryImpl(// this._localDataSource,
-      this._remoteDataSource,
-      this._networkInfo,);
+  RepositoryImpl(
+    // this._localDataSource,
+    this._remoteDataSource,
+    this._networkInfo,
+  );
 
   @override
   Future<Either<Failure, LoginAuthentication>> login(
       LoginRequest loginRequest) async {
     if (await _networkInfo.isConnected) {
       try {
+        print('start response');
         final LoginAuthenticationResponse response =
-        await _remoteDataSource.loginResponse(
+            await _remoteDataSource.loginResponse(
           loginRequest,
         );
-
+        print(response);
+        print(response);
         if (response.status == ApiInternalStatus.success) {
           // _localDataSource.saveHomeToCache(response);
           return Right(
@@ -37,15 +41,13 @@ class RepositoryImpl implements Repository {
           return Left(
             Failure(
               code: ApiInternalStatus.failure,
-              message: response.message ?? ResponseMessage.customDefault,
+              message: response.toString() ?? ResponseMessage.customDefault,
             ),
           );
         }
       } catch (error) {
         return Left(
-          ErrorHandler
-              .handle(error)
-              .failure,
+          ErrorHandler.handle(error).failure,
         );
       }
     } else {
@@ -54,6 +56,7 @@ class RepositoryImpl implements Repository {
       );
     }
   }
+
   //
   // @override
   // Future<Either<Failure, Authentication>> register(

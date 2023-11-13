@@ -1,7 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 
-
-
+import 'package:http/http.dart' as http;
+import 'package:tanta_app/app/constant.dart';
 import 'package:tanta_app/app/di.dart';
 import 'package:tanta_app/domain/usecase/login_usecase.dart';
 import 'package:tanta_app/presentation/base/base_view_model.dart';
@@ -12,9 +13,7 @@ import 'package:tanta_app/presentation/resources/string_manager.dart';
 
 import '../../../app/app_prefs.dart';
 
-
-class LoginViewModel extends  LoginViewModelOutput {
-
+class LoginViewModel extends LoginViewModelOutput {
   final AppPreferences _appPreferences = instance<AppPreferences>();
   final StreamController _emailController =
       StreamController<String>.broadcast();
@@ -28,10 +27,12 @@ class LoginViewModel extends  LoginViewModelOutput {
       StreamController.broadcast();
   LoginObject _loginObject = LoginObject('', '');
   final LoginUseCase _loginUseCase;
-  LoginViewModel(this._loginUseCase);
-  bool visible=false;
-  @override
 
+  LoginViewModel(this._loginUseCase);
+
+  bool visible = false;
+
+  @override
   void start() {
     inputState.add(ContentState());
   }
@@ -71,22 +72,42 @@ class LoginViewModel extends  LoginViewModelOutput {
         stateRenderType: StateRenderType.popupLoadingState,
       ),
     );
+    // Map<String, dynamic> query = {
+    //   "Email":"ali@yahoo.com",
+    //   "Password": "456",
+    // };
+    // try {
+    //   http
+    //       .get(
+    //     Uri.parse("${Constant.baseurl}People/GetPeopleByEmail_and_Password",)
+    //         .replace(queryParameters: query),
+    //   )
+    //       .then((response) {
+    //     print("Reponse status : ${response.statusCode}");
+    //     print("Response body : ${response.body}");
+    //     var myresponse = jsonDecode(response.body);
+    //     String token = myresponse["token"];
+    //   });
+    // } catch (e) {
+    //   print(e.toString());
+    // }
     (await _loginUseCase.execute(
       LoginUseCaseInput(
         email: _loginObject.email,
         password: _loginObject.password,
       ),
-    )).fold((failure) {
+    ))
+        .fold((failure) {
       inputState.add(
         ErrorState(
           stateRenderType: StateRenderType.popupErrorState,
           message: failure.message,
         ),
       );
-    }, (data) async{
+    }, (data) async {
       print(data);
-      await _appPreferences.setToken(data.token);
-      print("id ${_appPreferences.getToken()}");
+      await _appPreferences.setToken(data.id);
+      // print("id ${_appPreferences.getToken()}");
       inputState.add(
         ContentState(),
       );
@@ -147,8 +168,6 @@ class LoginViewModel extends  LoginViewModelOutput {
         .hasMatch(email);
   }
 
-
-
   String? _passwordOutError(String password) {
     if (password.isEmpty) {
       return AppStrings.passwordError1;
@@ -160,8 +179,6 @@ class LoginViewModel extends  LoginViewModelOutput {
     return _emailIsValid(_loginObject.email) &&
         _loginObject.password.isNotEmpty;
   }
-
-
 }
 
 abstract class LoginViewModelInput extends BaseViewModel {
@@ -182,7 +199,7 @@ abstract class LoginViewModelInput extends BaseViewModel {
   Sink get inputAreAllInputValid;
 }
 
-abstract class LoginViewModelOutput extends LoginViewModelInput{
+abstract class LoginViewModelOutput extends LoginViewModelInput {
   Stream<String?> get outEmailIsValid;
 
   Stream<String?> get outPasswordIsValid;

@@ -31,25 +31,32 @@ class _AppServicesClient implements AppServicesClient {
       r'Password': password,
     };
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    final Map<String, dynamic>? _data = {};
+    print("in api file ");
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<LoginAuthenticationResponse>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+      _setStreamType<LoginAuthenticationResponse>(
+        Options(
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
               _dio.options,
               'People/GetPeopleByEmail_and_Password',
               queryParameters: queryParameters,
-              data: _data,
+              // data: _data,
             )
             .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
+              baseUrl: _combineBaseUrls(
+                _dio.options.baseUrl,
+                baseUrl,
+              ),
+            ),
+      ),
+    );
+
     final value = LoginAuthenticationResponse.fromJson(_result.data!);
+    print(value);
     return value;
   }
 

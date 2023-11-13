@@ -9,10 +9,7 @@ class ErrorHandler implements Exception {
 
   ErrorHandler.handle(dynamic error) {
     if (error is DioExceptionType) {
-      // print(error.type);
-      // print(error.response?.data);
-      // print(error.response?.statusCode);
-      // print(error.response?.statusMessage);
+      print(error);
       failure = _handlerError(error);
     } else {
       failure = DataSource.customDefault.getFailure();

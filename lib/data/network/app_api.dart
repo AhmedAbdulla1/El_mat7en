@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:tanta_app/app/constant.dart';
 import 'package:tanta_app/data/response/responses.dart';
 import 'package:retrofit/http.dart';
+import 'dart:io';
 part 'app_api.g.dart';
 
 @RestApi(baseUrl: Constant.baseurl,)
