@@ -56,9 +56,9 @@ class AuthenticationResponse extends BaseResponse {
 @JsonSerializable()
 class LoginAuthenticationResponse extends BaseResponse {
   @JsonKey(name: 'ID')
-  int? id;
+  String? id;
   @JsonKey(name: 'IDAuthorties')
-  int? iDAuthor;
+  String? iDAuthor;
 
   LoginAuthenticationResponse(this.id,this.iDAuthor,);
 
