@@ -54,9 +54,9 @@ class _AppServicesClient implements AppServicesClient {
             ),
       ),
     );
-
+    print('result${_result.data}');
     final value = LoginAuthenticationResponse.fromJson(_result.data!);
-    print(value);
+    print("value$value " );
     return value;
   }
 
