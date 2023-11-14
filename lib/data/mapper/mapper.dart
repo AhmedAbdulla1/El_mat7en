@@ -3,41 +3,41 @@ import 'package:tanta_app/app/extensions.dart';
 import 'package:tanta_app/data/response/responses.dart';
 import 'package:tanta_app/domain/models/models.dart';
 
-extension UserDataResponseMapper on UserDataResponse? {
-  UserData toDomain() {
-    return UserData(
-      id: this?.id.orZero() ?? 0,
-      email: this?.email.orEmpty() ?? Constant.empty,
-      username: this?.username.orEmpty() ?? Constant.empty,
-      phoneNumber: this?.phoneNumber.orEmpty() ?? Constant.empty,
-    );
-  }
-}
+// extension UserDataResponseMapper on UserDataResponse? {
+//   UserData toDomain() {
+//     return UserData(
+//       id: this?.id.orZero() ?? 0,
+//       email: this?.email.orEmpty() ?? Constant.empty,
+//       username: this?.username.orEmpty() ?? Constant.empty,
+//       phoneNumber: this?.phoneNumber.orEmpty() ?? Constant.empty,
+//     );
+//   }
+// }
 
-extension AuthenticationResponseMapper on AuthenticationResponse? {
-  Authentication toDomain() {
-    return Authentication(
-        userData: this?.userData.toDomain(),
-        token: this?.token.orEmpty() ?? Constant.empty);
-  }
-}
+// extension AuthenticationResponseMapper on AuthenticationResponse? {
+//   Authentication toDomain() {
+//     return Authentication(
+//         userData: this?.userData.toDomain(),
+//         token: this?.token.orEmpty() ?? Constant.empty);
+//   }
+// }
 
 extension LoginAuthenticationMapper on LoginAuthenticationResponse? {
   LoginAuthentication toDomain() {
     return LoginAuthentication(
       id: this?.id.orZero() ?? Constant.zero,
-      token: this?.iDAuthor.orZero() ?? Constant.zero,
+      iDAuthor: this?.iDAuthor.orZero() ?? Constant.zero,
     );
   }
 }
 
-extension SendEmailResponsMapper on SendEmailResponse? {
-  SendEmail toDomain() {
-    return SendEmail(
-      detail: this?.detail.orEmpty() ?? Constant.empty,
-    );
-  }
-}
+// extension SendEmailResponsMapper on SendEmailResponse? {
+//   SendEmail toDomain() {
+//     return SendEmail(
+//       detail: this?.detail.orEmpty() ?? Constant.empty,
+//     );
+//   }
+// }
 
 // // extension CustomerResponseMapper on CustomerResponse? {
 // //   Customer toDomain() {

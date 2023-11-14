@@ -95,7 +95,7 @@ class RouteGenerator {
         });
       case Routes.feedStates:
         return MaterialPageRoute(builder: (_) {
-          return const FeedStates();
+          return  FeedStates();
         });
       // case Routes.modifyFarmScreen:
       //   return MaterialPageRoute(

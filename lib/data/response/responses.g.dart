@@ -7,12 +7,10 @@ part of 'responses.dart';
 // **************************************************************************
 
 BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) => BaseResponse()
-  ..status = json['status'] as int?
   ..message = json['message'] as String?;
 
 Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
     <String, dynamic>{
-      'status': instance.status,
       'message': instance.message,
     };
 
@@ -40,13 +38,11 @@ AuthenticationResponse _$AuthenticationResponseFromJson(
           : UserDataResponse.fromJson(json['data'] as Map<String, dynamic>),
       json['token'] as String?,
     )
-      ..status = json['status'] as int?
       ..message = json['message'] as String?;
 
 Map<String, dynamic> _$AuthenticationResponseToJson(
         AuthenticationResponse instance) =>
     <String, dynamic>{
-      'status': instance.status,
       'message': instance.message,
       'data': instance.userData,
       'token': instance.token,
@@ -58,17 +54,9 @@ LoginAuthenticationResponse _$LoginAuthenticationResponseFromJson(
       json['id'] as int?,
       json['IDAuthorties'] as int?,
     )
-      ..status = json['status'] as int?
       ..message = json['message'] as String?;
 
-Map<String, dynamic> _$LoginAuthenticationResponseToJson(
-        LoginAuthenticationResponse instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'message': instance.message,
-      'id': instance.id,
-      'token': instance.iDAuthor,
-    };
+
 
 SendEmailResponse _$SendEmailResponseFromJson(Map<String, dynamic> json) =>
     SendEmailResponse(

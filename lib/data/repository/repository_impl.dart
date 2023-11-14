@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:tanta_app/data/data_source/remote_data_source.dart';
 import 'package:tanta_app/data/mapper/mapper.dart';
 import 'package:tanta_app/data/network/error_handler.dart';
@@ -25,15 +26,15 @@ class RepositoryImpl implements Repository {
       LoginRequest loginRequest) async {
     if (await _networkInfo.isConnected) {
       try {
-        print('start response');
+        debugPrint('start response');
         final LoginAuthenticationResponse response =
             await _remoteDataSource.loginResponse(
           loginRequest,
         );
-        print(response);
-        print(response);
-        if (response.status == ApiInternalStatus.success) {
-          // _localDataSource.saveHomeToCache(response);
+        debugPrint("response$response");
+        // debugPrint("status ${response.status}");
+        if (response.message == null) {
+          debugPrint("right");
           return Right(
             response.toDomain(),
           );
@@ -41,7 +42,7 @@ class RepositoryImpl implements Repository {
           return Left(
             Failure(
               code: ApiInternalStatus.failure,
-              message: response.toString() ?? ResponseMessage.customDefault,
+              message: response.message?? ResponseMessage.customDefault,
             ),
           );
         }

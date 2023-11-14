@@ -5,8 +5,7 @@ part 'responses.g.dart';
 
 @JsonSerializable()
 class BaseResponse {
-  @JsonKey(name: "status")
-  int? status;
+
   @JsonKey(name: "message")
   String? message;
 }
@@ -67,9 +66,6 @@ class LoginAuthenticationResponse extends BaseResponse {
   //form json
   factory LoginAuthenticationResponse.fromJson(Map<String, dynamic> json) =>
       _$LoginAuthenticationResponseFromJson(json);
-
-  //to json
-  Map<String, dynamic> toJson() => _$LoginAuthenticationResponseToJson(this);
 }
 
 
