@@ -47,6 +47,7 @@ class RepositoryImpl implements Repository {
           );
         }
       } catch (error) {
+        print(error.toString());
         return Left(
           ErrorHandler.handle(error).failure,
         );

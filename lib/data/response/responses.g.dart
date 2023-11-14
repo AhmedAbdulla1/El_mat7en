@@ -51,8 +51,8 @@ Map<String, dynamic> _$AuthenticationResponseToJson(
 LoginAuthenticationResponse _$LoginAuthenticationResponseFromJson(
         Map<String, dynamic> json) =>
     LoginAuthenticationResponse(
-      json['id'] as int?,
-      json['IDAuthorties'] as int?,
+      json.keys.contains('id') ? json['id'] as int? : 0,
+      json.keys.contains('IDAuthorties') ? json['IDAuthorties'] as int? : 0,
     )
       ..message = json.keys.contains("message") ?json["message"] as String? : null;
 
