@@ -25,8 +25,8 @@ import 'package:tanta_app/domain/models/models.dart';
 extension LoginAuthenticationMapper on LoginAuthenticationResponse? {
   LoginAuthentication toDomain() {
     return LoginAuthentication(
-      id: this?.id.orZero() ?? Constant.zero,
-      iDAuthor: this?.iDAuthor.orZero() ?? Constant.zero,
+      id: this?.id.orEmpty() ?? Constant.empty,
+      iDAuthor: this?.iDAuthor.orEmpty() ?? Constant.empty,
     );
   }
 }
