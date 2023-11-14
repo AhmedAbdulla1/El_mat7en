@@ -54,7 +54,7 @@ LoginAuthenticationResponse _$LoginAuthenticationResponseFromJson(
       json['id'] as int?,
       json['IDAuthorties'] as int?,
     )
-      ..message = json['message'] as String?;
+      ..message = json.keys.contains("message") ?json["message"] as String? : null;
 
 
 
