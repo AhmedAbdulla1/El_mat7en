@@ -13,7 +13,7 @@ class AppStrings {
 
   static const String forgotPassword = 'هل نسيت كلمه المرور؟ ';
 
-  static const String login = 'دخول';
+  static const String login = 'تسجيل الدخول';
   static const String farmer = 'المزارع';
   static const String editData = 'تعديل البيانات';
   static const String editFarm = 'تعديل المزرعة';

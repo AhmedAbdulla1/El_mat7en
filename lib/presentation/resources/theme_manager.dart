@@ -25,11 +25,11 @@ ThemeData getApplicationTheme() {
     appBarTheme: AppBarTheme(
       centerTitle: true,
       elevation: AppSize.s4,
-      color: ColorManager.primary,
+      color: ColorManager.white,
       shadowColor: ColorManager.lightPrimary,
       titleTextStyle: getRegularStyle(
-        fontSize: FontSize.s16,
-        color: ColorManager.white,
+        fontSize: FontSize.s32,
+        color: ColorManager.black,
       ),
     ),
     // button theme

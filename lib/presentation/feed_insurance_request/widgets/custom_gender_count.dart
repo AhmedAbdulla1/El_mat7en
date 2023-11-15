@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tanta_app/presentation/feed_form/widgets/custom_text_form_filed.dart';
 import 'package:tanta_app/presentation/resources/font_manager.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_button.dart';
+import 'package:tanta_app/presentation/resources/values_manager.dart';
 
 class CustomGenderCount extends StatefulWidget {
   const CustomGenderCount({
@@ -10,12 +11,12 @@ class CustomGenderCount extends StatefulWidget {
     required this.gender,
     required this.genderController,
     this.fontSize,
-
-
   });
+
   final String gender;
   final TextEditingController genderController;
   final double? fontSize;
+
   @override
   State<CustomGenderCount> createState() => _CustomGenderCountState();
 }
@@ -23,6 +24,7 @@ class CustomGenderCount extends StatefulWidget {
 class _CustomGenderCountState extends State<CustomGenderCount> {
   GlobalKey<FormState> globalKey = GlobalKey();
   TextEditingController animalID = TextEditingController();
+
   @override
   void initState() {
     widget.genderController.text = '0';
@@ -35,7 +37,7 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
       textDirection: TextDirection.rtl,
       children: [
         SizedBox(
-          width: 46.w,
+          width: 45.w,
         ),
         Text(
           widget.gender,
@@ -43,12 +45,10 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
             color: Colors.grey,
             fontSize: widget.fontSize ?? FontSize.s22,
             fontWeight: FontWeight.bold,
-            
           ),
         ),
         SizedBox(
           width: 50.w,
-
         ),
         SizedBox(
           width: 73.w,
@@ -63,8 +63,8 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
           width: 34.w,
         ),
         SizedBox(
-          width: 120.w,
-          height: 33.h,
+          width: 130.w,
+          height: 45.h,
           child: customElevatedButtonWithoutStream(
             onPressed: () {
               showDialog(context);
@@ -75,15 +75,21 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
       ],
     );
   }
+
   Future<dynamic> showDialog(
     BuildContext context,
   ) {
     return showModalBottomSheet(
       context: context,
+      elevation: AppSize.s5,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusDirectional.vertical(
+              top: Radius.circular(AppSize.s28.w))),
       isScrollControlled: true,
       builder: (context) {
         return SingleChildScrollView(
           child: Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
             padding: EdgeInsets.only(
               bottom: MediaQuery.of(context)
                   .viewInsets
@@ -96,26 +102,34 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 30.h,
+                      height: AppSize.s14.h,
                     ),
-                    CustomTextFormFiled(
-                      hintText: 'رقم الدبله',
-                      textEditingController: animalID,
+                    Padding(
+                      padding: EdgeInsets.all(AppPadding.p16.w),
+                      child: CustomTextFormFiled(
+                        hintText: 'رقم الدبله',
+                        textEditingController: animalID,
+                      ),
                     ),
                     SizedBox(
-                      height: 15.h,
+                      height: AppSize.s14.h,
                     ),
-                    customElevatedButtonWithoutStream(
-                      onPressed: () {
-                        if (globalKey.currentState!.validate()) {
-                          widget.genderController.text =
-                              (int.parse(widget.genderController.text) + 1)
-                                  .toString();
-                          animalID.clear();
-                          Navigator.pop(context);
-                        }
-                      },
-                      text: 'تقديم الطلب ',
+                    Padding(
+                      padding: const EdgeInsetsDirectional.symmetric(
+                        horizontal: AppPadding.p20,
+                      ),
+                      child: customElevatedButtonWithoutStream(
+                        onPressed: () {
+                          if (globalKey.currentState!.validate()) {
+                            widget.genderController.text =
+                                (int.parse(widget.genderController.text) + 1)
+                                    .toString();
+                            animalID.clear();
+                            Navigator.pop(context);
+                          }
+                        },
+                        text: 'إضافه',
+                      ),
                     ),
                   ],
                 ),
@@ -126,5 +140,4 @@ class _CustomGenderCountState extends State<CustomGenderCount> {
       },
     );
   }
-
 }
