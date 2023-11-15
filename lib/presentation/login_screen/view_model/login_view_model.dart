@@ -1,21 +1,11 @@
 import 'dart:async';
-
-
-
-import 'package:tanta_app/app/di.dart';
-import 'package:tanta_app/domain/usecase/login_usecase.dart';
-import 'package:tanta_app/presentation/base/base_view_model.dart';
-import 'package:tanta_app/presentation/common/freezed/freezed.dart';
-import 'package:tanta_app/presentation/common/state_render/state_render.dart';
-import 'package:tanta_app/presentation/common/state_render/state_renderer_imp.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:tanta_app/presentation/resources/string_manager.dart';
 
-import '../../../app/app_prefs.dart';
+import '../../common/freezed/freezed.dart';
 
 
-class LoginViewModel extends  LoginViewModelOutput {
-
-  final AppPreferences _appPreferences = instance<AppPreferences>();
+class LoginViewModel extends LoginViewModelOutput {
   final StreamController _emailController =
       StreamController<String>.broadcast();
   final StreamController _passwordController =
@@ -27,13 +17,13 @@ class LoginViewModel extends  LoginViewModelOutput {
   final StreamController<bool> isUserLoginSuccessfullyStreamController =
       StreamController.broadcast();
   LoginObject _loginObject = LoginObject('', '');
-  final LoginUseCase _loginUseCase;
-  LoginViewModel(this._loginUseCase);
-  bool visible=false;
-  @override
 
+  LoginViewModel();
+
+  bool visible = false;
+
+  @override
   void start() {
-    inputState.add(ContentState());
   }
 
   @override
@@ -66,33 +56,26 @@ class LoginViewModel extends  LoginViewModelOutput {
 
   @override
   login() async {
-    inputState.add(
-      LoadingState(
-        stateRenderType: StateRenderType.popupLoadingState,
-      ),
-    );
-    (await _loginUseCase.execute(
-      LoginUseCaseInput(
-        email: _loginObject.email,
-        password: _loginObject.password,
-      ),
-    )).fold((failure) {
-      inputState.add(
-        ErrorState(
-          stateRenderType: StateRenderType.popupErrorState,
-          message: failure.message,
-        ),
-      );
-    }, (data) async{
-      print(data);
-      // await _appPreferences.setToken(data.user!.uid);
-      // print("uid ${_appPreferences.getToken()}");
-      inputState.add(
-        ContentState(),
-      );
+    // Map<String, dynamic> query = {
+    //   "Email":"ali@yahoo.com",
+    //   "Password": "456",
+    // };
+    // try {
+    //   http
+    //       .get(
+    //     Uri.parse("${Constant.baseurl}People/GetPeopleByEmail_and_Password",)
+    //         .replace(queryParameters: query),
+    //   )
+    //       .then((response) {
+    //     print("Reponse status : ${response.statusCode}");
+    //     print("Response body : ${response.body}");
+    //     var myresponse = jsonDecode(response.body);
+    //     String token = myresponse["token"];
+    //   });
+    // } catch (e) {
+    //   print(e.toString());
+    // }
 
-      isUserLoginSuccessfullyStreamController.add(true);
-    });
   }
 
   @override
@@ -147,8 +130,6 @@ class LoginViewModel extends  LoginViewModelOutput {
         .hasMatch(email);
   }
 
-
-
   String? _passwordOutError(String password) {
     if (password.isEmpty) {
       return AppStrings.passwordError1;
@@ -160,11 +141,9 @@ class LoginViewModel extends  LoginViewModelOutput {
     return _emailIsValid(_loginObject.email) &&
         _loginObject.password.isNotEmpty;
   }
-
-
 }
 
-abstract class LoginViewModelInput extends BaseViewModel {
+abstract class LoginViewModelInput  {
   setEmail(String email);
 
   setPassword(String password);
@@ -182,7 +161,7 @@ abstract class LoginViewModelInput extends BaseViewModel {
   Sink get inputAreAllInputValid;
 }
 
-abstract class LoginViewModelOutput extends LoginViewModelInput{
+abstract class LoginViewModelOutput extends LoginViewModelInput {
   Stream<String?> get outEmailIsValid;
 
   Stream<String?> get outPasswordIsValid;

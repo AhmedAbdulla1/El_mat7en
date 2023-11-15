@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:tanta_app/presentation/apply/view.dart';
-import 'package:tanta_app/presentation/edit_data/view.dart';
-import 'package:tanta_app/presentation/farm_modification_screen/modify.dart';
+import 'package:tanta_app/presentation/committee_states/committee_states.dart';
+import 'package:tanta_app/presentation/done_requests/done_requests.dart';
 import 'package:tanta_app/presentation/main_screen/main_view_model.dart';
-import 'package:tanta_app/presentation/feed_states/feed_states.dart';
 import 'package:tanta_app/presentation/resources/assets_manager.dart';
 import 'package:tanta_app/presentation/resources/color_manager.dart';
 import 'package:tanta_app/presentation/resources/font_manager.dart';
+import '../request_states/request_states.dart';
 
 class FarmerScreen extends StatefulWidget {
   const FarmerScreen({Key? key}) : super(key: key);
@@ -31,14 +30,13 @@ class _FarmerScreenState extends State<FarmerScreen> {
     PersistentBottomNavBarItem(
       icon: SvgPicture.asset(ImageAssets.order),
       title: "تقديم الطلب",
-      activeColorPrimary:  ColorManager.primary,
+      activeColorPrimary: ColorManager.primary,
       inactiveColorPrimary: Colors.grey,
-
     ),
     PersistentBottomNavBarItem(
       icon: Image.asset(ImageAssets.trackOrder),
       title: "متابعة الطلب",
-      activeColorPrimary:  ColorManager.primary,
+      activeColorPrimary: ColorManager.primary,
       inactiveColorPrimary: Colors.grey,
     ),
     PersistentBottomNavBarItem(
@@ -47,12 +45,12 @@ class _FarmerScreenState extends State<FarmerScreen> {
       activeColorPrimary: ColorManager.primary,
       inactiveColorPrimary: Colors.grey,
     ),
-    PersistentBottomNavBarItem(
-      icon: Image.asset(ImageAssets.editData),
-      title: "تعديل البيانات",
-      activeColorPrimary: ColorManager.primary,
-      inactiveColorPrimary: Colors.grey,
-    ),
+    // PersistentBottomNavBarItem(
+    //   icon: Image.asset(ImageAssets.editData),
+    //   title: "تعديل البيانات",
+    //   activeColorPrimary: ColorManager.primary,
+    //   inactiveColorPrimary: Colors.grey,
+    // ),
   ];
 
   @override
@@ -83,12 +81,16 @@ class _FarmerScreenState extends State<FarmerScreen> {
         context,
         controller: _controller,
         items: navBarItems,
-        screens: const [
+        screens: [
           // Add your tab views/screens here
-          ApplyView(),
-          FeedStates(),
-          Modify(),
-          EditDataView(),
+          // ApplyView(),
+          RequestsStates(),
+          // RequestsStates(),
+          CommitteeStates(),
+          // FeedStates(),
+          RequestsDone(),
+          // Modify(),
+          // EditDataView(),
           // Add more screens for other tabs
         ],
         confineInSafeArea: true,
@@ -102,5 +104,4 @@ class _FarmerScreenState extends State<FarmerScreen> {
       ),
     );
   }
-
 }

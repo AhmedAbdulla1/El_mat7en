@@ -3,9 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart'as int;
-
-
+import 'package:intl/intl.dart' as intl;
 import 'package:tanta_app/presentation/resources/color_manager.dart';
 import 'package:tanta_app/presentation/resources/values_manager.dart';
 
@@ -13,16 +11,16 @@ import '../feed_form/widgets/custom_text_form_filed.dart';
 import '../resources/assets_manager.dart';
 import '../resources/string_manager.dart';
 
-class AddDeleteHead extends StatefulWidget {
-  const AddDeleteHead([this.isDelete = false]);
+class addHead extends StatefulWidget {
+  const addHead([this.isDelete = false]);
 
   final bool isDelete;
 
   @override
-  State<AddDeleteHead> createState() => _AddDeleteHeadState();
+  State<addHead> createState() => _addHeadState();
 }
 
-class _AddDeleteHeadState extends State<AddDeleteHead> {
+class _addHeadState extends State<addHead> {
   TextEditingController data = TextEditingController();
   TextEditingController image = TextEditingController();
   TextEditingController id = TextEditingController();
@@ -31,7 +29,7 @@ class _AddDeleteHeadState extends State<AddDeleteHead> {
   final ImagePicker _imagePicker = ImagePicker();
 
   DateTime _selectDate = DateTime.now();
-  String hint = int.DateFormat('yyyy-MM-d').format(DateTime.now()).toString();
+  String hint = intl.DateFormat('yyyy-MM-d').format(DateTime.now()).toString();
 
   _getDateFromUser() async {
     DateTime? pickedDate = await showDatePicker(
@@ -59,7 +57,7 @@ class _AddDeleteHeadState extends State<AddDeleteHead> {
     if (pickedDate != null) {
       setState(() {
         _selectDate = pickedDate;
-        hint =int.DateFormat.yMd().format(_selectDate);
+        hint = intl.DateFormat.yMd().format(_selectDate);
       });
     } else {
       debugPrint('null or something wrong');
@@ -74,74 +72,28 @@ class _AddDeleteHeadState extends State<AddDeleteHead> {
 
     // log((DateFormat('yyyy-MM-d').format(DateTime.now()).toString()));
 
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            widget.isDelete ? 'حذف' : 'اضافة رأس',
-            style: TextStyle(
-                fontSize: 30.sp,
-                color: Colors.black,
-                fontWeight: FontWeight.bold),
-          ),
-          backgroundColor: ColorManager.white,
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-              size: 30,
-            ),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          widget.isDelete ? 'حذف' : 'اضافة رأس',
         ),
-        body: Column(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: ColorManager.black,
+            size: AppSize.s30,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: Column(
+
           children: [
             Expanded(
               child: ListView(
                 children: <Widget>[
-                  // Padding(
-                  //   padding: EdgeInsets.only(
-                  //       top: AppPadding.p30.h, bottom: AppPadding.p30.h),
-                  //   child: Container(
-                  //     alignment: Alignment.centerLeft,
-                  //     child: Column(
-                  //       children: [
-                  //         Row(
-                  //           children: [
-                  //             const Spacer(
-                  //               flex: 1,
-                  //             ),
-                  //             Text(
-                  //               widget.isDelete ? 'حذف' : 'اضافة رأس',
-                  //               style: TextStyle(
-                  //                   fontSize: 30.sp,
-                  //                   color: Colors.black,
-                  //                   fontWeight: FontWeight.bold),
-                  //             ),
-                  //             const Spacer(
-                  //               flex: 1,
-                  //             ),
-                  //             IconButton(
-                  //               onPressed: () {
-                  //                 Navigator.pop(context);
-                  //               },
-                  //               icon: Icon(
-                  //                 Icons.arrow_forward,
-                  //                 size: 30.sp,
-                  //               ),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //         const Divider(
-                  //           height: 3,
-                  //           color: Colors.black,
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                   if (widget.isDelete)
                     Padding(
                       padding: EdgeInsets.symmetric(
@@ -193,8 +145,6 @@ class _AddDeleteHeadState extends State<AddDeleteHead> {
                         },
                       ),
                     ),
-
-                  /////////////////////
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: AppPadding.p10.w,
@@ -215,7 +165,7 @@ class _AddDeleteHeadState extends State<AddDeleteHead> {
                     child: DropdownMenu(
                       width: MediaQuery.sizeOf(context).width - 80.w,
                       label: Text(
-                        items[0],
+                        items[1],
                         style: Theme.of(context).textTheme.displayMedium,
                       ),
                       textStyle: Theme.of(context).textTheme.displayMedium,
@@ -243,7 +193,6 @@ class _AddDeleteHeadState extends State<AddDeleteHead> {
                       },
                     ),
                   ),
-
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: AppPadding.p10.w,
@@ -288,7 +237,6 @@ class _AddDeleteHeadState extends State<AddDeleteHead> {
                       onSelected: (val) {},
                     ),
                   ),
-
                   if (!widget.isDelete)
                     Padding(
                       padding: EdgeInsets.symmetric(
@@ -373,12 +321,9 @@ class _AddDeleteHeadState extends State<AddDeleteHead> {
                       width: 300,
                       height: 65,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => Navigator.pop(context),
                         child: Text(
                           widget.isDelete ? 'حذف' : 'اضافة',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
                         ),
                       ),
                     ),

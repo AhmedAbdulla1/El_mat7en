@@ -51,6 +51,7 @@ dependencies:
   image_picker: ^1.0.4
   persistent_bottom_nav_bar: ^5.0.2
   flutter_svg: ^2.0.7
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   retrofit_generator: ^7.0.7
   build_runner: ^2.3.2
+  freezed: ^2.4.5
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -80,7 +82,7 @@ flutter:
     - assets/images/
     - assets/images/edit_data.png
     - assets/images/edit_farm.png
-
+    - assets/json/
 
   # An images asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
