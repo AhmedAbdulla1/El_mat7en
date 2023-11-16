@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tanta_app/app/di.dart';
 import 'package:tanta_app/presentation/administrative/administrative.dart';
 import 'package:tanta_app/presentation/feed_form/feed_form.dart';
 import 'package:tanta_app/presentation/feed_states/feed_states.dart';
@@ -8,7 +7,6 @@ import 'package:tanta_app/presentation/login_screen/view/login_view.dart';
 import 'package:tanta_app/presentation/main_screen/main_view.dart';
 import 'package:tanta_app/presentation/resources/string_manager.dart';
 import 'package:tanta_app/presentation/splash_screen/splash_view.dart';
-
 import 'package:tanta_app/presentation/veterinary_screen/veterinary.dart';
 
 
@@ -51,7 +49,6 @@ class RouteGenerator {
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (_) {
-            initLoginModule();
             return const LoginView();
           },
         );

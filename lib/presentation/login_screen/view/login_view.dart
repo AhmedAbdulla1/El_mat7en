@@ -3,15 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tanta_app/app/app_prefs.dart';
-import 'package:tanta_app/app/di.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_button.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_text_form_field.dart';
-import 'package:tanta_app/presentation/common/state_render/state_renderer_imp.dart';
 import 'package:tanta_app/presentation/login_screen/view_model/login_view_model.dart';
-import 'package:tanta_app/presentation/resources/color_manager.dart';
-import 'package:tanta_app/presentation/resources/font_manager.dart';
 import 'package:tanta_app/presentation/resources/routes_manager.dart';
 import 'package:tanta_app/presentation/resources/string_manager.dart';
 import 'package:tanta_app/presentation/resources/values_manager.dart';
@@ -24,8 +19,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final AppPreferences _appPreferences = instance<AppPreferences>();
-  final LoginViewModel _loginViewModel = instance<LoginViewModel>();
+  final LoginViewModel _loginViewModel = LoginViewModel();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey _globalKey = GlobalKey<FormState>();
@@ -53,7 +47,6 @@ class _LoginViewState extends State<LoginView> {
         .listen((isLoading) {
       if (isLoading) {
         SchedulerBinding.instance.addPostFrameCallback((_) {
-          _appPreferences.setRole('admin');
           // debugPrint(_appPreferences.getToken());
           Navigator.pushReplacementNamed(context, Routes.farmerScreen);
         });
@@ -70,18 +63,8 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return customScaffold(
-      body: StreamBuilder<StateFlow>(
-        stream: _loginViewModel.outputState,
-        builder: (context, snapshot) =>
-            snapshot.data?.getScreenWidget(
-              context,
-              _getContent(),
-              () {
-                _loginViewModel.inputState.add(ContentState());
-              },
-            ) ??
-            _getContent(),
-      ),
+      body: _getContent(),
+
     );
   }
   Widget _getContent() {
@@ -125,9 +108,7 @@ class _LoginViewState extends State<LoginView> {
               customElevatedButton(
                 stream: _loginViewModel.outAreAllInputValid,
                 onPressed: () {
-                  _loginViewModel.login();
-                    // Navigator.pushReplacementNamed(context, Routes.farmerScreen);
-
+                    Navigator.pushReplacementNamed(context, Routes.farmerScreen);
                 },
                 text: AppStrings.login,
               ),

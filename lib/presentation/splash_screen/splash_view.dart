@@ -1,9 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:tanta_app/app/app_prefs.dart';
-import 'package:tanta_app/app/di.dart';
 import 'package:tanta_app/presentation/common/reusable/custom_scaffold.dart';
-import 'package:tanta_app/presentation/feed_form/feed_form.dart';
 import 'package:tanta_app/presentation/resources/assets_manager.dart';
 import 'package:tanta_app/presentation/resources/constant.dart';
 import 'package:tanta_app/presentation/resources/routes_manager.dart';
@@ -17,7 +14,6 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-  final AppPreferences _appPreferences = instance<AppPreferences>();
   Timer? _timer;
 
   _startTimer() {
